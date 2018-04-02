@@ -1,0 +1,41 @@
+body{
+    background:url(./img/background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#logo{
+    position: absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    margin:auto;
+    width:100px;
+    height:70px;
+    background:url(./img/logo.jpg) no-repeat;
+    background-size:contain;
+}
+
+#display{
+    position:absolute;
+    left:0px;
+    right:0px;
+    top:100px;
+    width:400px;
+    height:500px;
+    margin:auto;
+    border:black 2px solid;
+}
+
+#weather_display{
+    position:absolute;
+    left:10px;
+    top:0px;
+    bottom:0px;
+    width:150px;
+    height:300px;
+    margin:auto;
+    border:black 2px solid;
+    text-align: center;
+}
