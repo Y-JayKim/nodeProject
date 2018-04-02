@@ -1,6 +1,9 @@
 const express = require('express');
 const request = require('request');
+const hbs = require('hbs');
 const fs = require('fs');
+
+const port = process.env.PORT || 8080;
 
 //base server
 var app = express();
@@ -8,9 +11,21 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 
 app.get('/',(request, response) =>{
-	response.send('<script>window.location.href = "http://localhost:8080/main.html"</script>');
+	response.sendFile('public/main.html', {root: __dirname })
 });
 
-app.listen(8080, () => {
-    console.log('Server is up on the port 8080');
+app.get('/signin', (request, response) => {
+	response.sendFile('public/signin.html', {root: __dirname })
+});
+
+app.get('/location', (request, response) => {
+	response.sendFile('public/location.html', {root: __dirname })
+});
+
+app.get('/weather', (request, response) => {
+	response.sendFile('public/weather.html', {root: __dirname })
+});
+
+app.listen(port, () => {
+    console.log(`Server is up on the port ${port}`);
 });
