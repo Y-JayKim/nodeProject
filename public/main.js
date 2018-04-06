@@ -1,5 +1,5 @@
 var topButClass = document.getElementsByClassName('top_but');
-var buttonsClass = document.getElementsByClassName('buttons');
+var buttonsClass = document.getElementsByClassName('list_buttons');
 
 // is this okay to use?
 for (var ind = 0; ind < topButClass.length; ind++){

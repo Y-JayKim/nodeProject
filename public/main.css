@@ -66,9 +66,47 @@ body{
 	position: absolute;
 	top:100px;
 	left:0px;
-	width:100%;
-	height:600px;
+	width:1255px;
+	height:1200px;
 	border:2px black solid;
+}
+.lists{
+    position: absolute;
+    width:900px;
+    height:100px;
+    left:0px;
+    right:0px;
+    margin:auto;
+    border:2px black solid;
+}
+.list_imgs{
+    position: absolute;
+    left:10px;
+    top:0px;
+    bottom:0px;
+    margin:auto;
+    width:200px;
+    height:100px;
+    border: none;
+}
+.list_infos{
+    position: absolute;
+    left:250px;
+    top:0px;
+    bottom:0px;
+    margin:auto;
+    width:500px;
+    height:90px;
+    border:white 1px solid
+}
+.list_buttons{
+    position: absolute;
+    left:800px;
+    top:0px;
+    bottom:0px;
+    margin:auto;
+    width:100px;
+    height:100px;
 }
 /*-------------------------Main Display-------------------------------------*/
 p1{
@@ -125,37 +163,237 @@ p2{
 	font-size: 22px;
 }
 /*-----------------------Western Display----------------*/
-#western_display{
-	background-color:black;
+#w_list1{
+   top:20px; 
+}
+#w_list2{
+    top:150px;
+}
+#w_list3{
+    top:280px;
+}
+#w_list4{
+    top:410px;
+}
+#w_list5{
+    top:540px;
+}
+#w_list6{
+    top:670px;
+}
+#w_list7{
+    top:800px;
+}
+#w_list8{
+    top:930px;
 }
 
+#w_img1{
+    background:url(img/mcdonalds.png) center center no-repeat;
+    background-size:contain;
+}
+#w_img2{
+    background:url(img/dennys.png) center center no-repeat;
+    background-size: contain;
+}
+#w_img3{
+    background:url(img/ihop.png) center center no-repeat;
+    background-size:contain;
+}
+#w_img4{
+    background:url(img/timhortons.png) center center no-repeat;
+    background-size:contain;
+}
+#w_img5{
+    background:url(img/tripleo.png) center center no-repeat;
+    background-size:contain;
+}
+#w_img6{
+    background:url(img/churchs.png) center center no-repeat;
+    background-size:contain;
+}
+#w_img7{
+    background:url(img/wendys.png) center center no-repeat;
+    background-size:contain;
+}
+#w_img8{
+    background:url(img/whitespot.png) center center no-repeat;
+    background-size:contain;
+}
 /*-----------------------Korean Display----------------*/
-#korean_display{
-	background-color:green;
+#k_list1{
+   top:20px; 
+}
+#k_list2{
+    top:150px;
+}
+#k_list3{
+    top:280px;
+}
+#k_list4{
+    top:410px;
+}
+#k_list5{
+    top:540px;
+}
+#k_list6{
+    top:670px;
+}
+#k_list7{
+    top:800px;
+}
+#k_list8{
+    top:930px;
 }
 
+#k_img1{
+    background:url(img/seoulfood.jpg) center center no-repeat;
+    background-size:contain;
+}
+#k_img2{
+    background:url(img/soban.png) center center no-repeat;
+    background-size: contain;
+}
+#k_img3{
+    background:url(img/koreanbbq.jpg) center center no-repeat;
+    background-size:contain;
+}
+#k_img4{
+    background:url(img/sura.png) center center no-repeat;
+    background-size:contain;
+}
+#k_img5{
+    background:url(img/daorae.png) center center no-repeat;
+    background-size:contain;
+}
+#k_img6{
+    background:url(img/kimsister.png) center center no-repeat;
+    background-size:contain;
+}
+#k_img7{
+    background:url(img/hoban.jpg) center center no-repeat;
+    background-size:contain;
+}
+#k_img8{
+    background:url(img/hansang.png) center center no-repeat;
+    background-size:contain;
+}
 /*-----------------------Chinese Display----------------*/
-#chinese_display{
-	background-color:blue;
+#c_list1{
+   top:20px; 
+}
+#c_list2{
+    top:150px;
+}
+#c_list3{
+    top:280px;
+}
+#c_list4{
+    top:410px;
+}
+#c_list5{
+    top:540px;
+}
+#c_list6{
+    top:670px;
+}
+#c_list7{
+    top:800px;
+}
+#c_list8{
+    top:930px;
 }
 
+#c_img1{
+    background:url(img/chans.jpg) center center no-repeat;
+    background-size:contain;
+}
+#c_img2{
+    background:url(img/slogan.jpg) center center no-repeat;
+    background-size: contain;
+}
+#c_img3{
+    background:url(img/chinesefood.jpg) center center no-repeat;
+    background-size:contain;
+}
+#c_img4{
+    background:url(img/chinesethai.png) center center no-repeat;
+    background-size:contain;
+}
+#c_img5{
+    background:url(img/xinji.jpg) center center no-repeat;
+    background-size:contain;
+}
+#c_img6{
+    background:url(img/yutkee.jpg) center center no-repeat;
+    background-size:contain;
+}
+#c_img7{
+    background:url(img/sun.png) center center no-repeat;
+    background-size:contain;
+}
+#c_img8{
+    background:url(img/xiang.jpg) center center no-repeat;
+    background-size:contain;
+}
 /*-----------------------Japanese Display----------------*/
-#japanese_display{
-	background-color:red;
+#j_list1{
+   top:20px; 
+}
+#j_list2{
+    top:150px;
+}
+#j_list3{
+    top:280px;
+}
+#j_list4{
+    top:410px;
+}
+#j_list5{
+    top:540px;
+}
+#j_list6{
+    top:670px;
+}
+#j_list7{
+    top:800px;
+}
+#j_list8{
+    top:930px;
 }
 
-.buttons{
-	position:absolute;
-	width:100px;
-	height:100px;
-	font-size: 25px;
-	right:0px;
-	left:0px;
-	top:0px;
-	bottom:0px;
-	margin:auto;
+#j_img1{
+    background:url(img/sokouden.png) center center no-repeat;
+    background-size:contain;
 }
-
+#j_img2{
+    background:url(img/bushido.jpg) center center no-repeat;
+    background-size: contain;
+}
+#j_img3{
+    background:url(img/atsui.jpg) center center no-repeat;
+    background-size:contain;
+}
+#j_img4{
+    background:url(img/japanese.jpg) center center no-repeat;
+    background-size:contain;
+}
+#j_img5{
+    background:url(img/risingramen.jpg) center center no-repeat;
+    background-size:contain;
+}
+#j_img6{
+    background:url(img/kobe.jpg) center center no-repeat;
+    background-size:contain;
+}
+#j_img7{
+    background:url(img/sakura.jpg) center center no-repeat;
+    background-size:contain;
+}
+#j_img8{
+    background:url(img/yabany.jpg) center center no-repeat;
+    background-size:contain;
+}
 /*----------------------LogIn Option------------------------------*/
 #login_option{
 	position: fixed;
