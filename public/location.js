@@ -20,5 +20,5 @@ document.getElementById('address').addEventListener('keyup',(ev)=>{
 });
 
 document.getElementById('submit').addEventListener("click",()=>{
-	document.location.href = "./weather.html";
+    document.location.href = "./weather.html";
 });

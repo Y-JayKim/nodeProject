@@ -1,29 +1,31 @@
 const express = require('express');
-const request = require('request');
 const hbs = require('hbs');
 const fs = require('fs');
 
-const port = process.env.PORT || 8080;
-
-//base server
 var app = express();
 
+const port = process.env.PORT || 8080;
+
+hbs.registerPartials(__dirname + '/views/partials');
+
+app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
+
 app.get('/',(request, response) =>{
-	response.sendFile('public/main.html', {root: __dirname })
+	response.render('main.hbs', {root: __dirname })
 });
 
 app.get('/signin', (request, response) => {
-	response.sendFile('public/signin.html', {root: __dirname })
+	response.render('signin.hbs', {root: __dirname })
 });
 
 app.get('/location', (request, response) => {
-	response.sendFile('public/location.html', {root: __dirname })
+	response.render('location.hbs', {root: __dirname })
 });
 
 app.get('/weather', (request, response) => {
-	response.sendFile('public/weather.html', {root: __dirname })
+	response.render('weather.hbs', {root: __dirname })
 });
 
 app.listen(port, () => {
