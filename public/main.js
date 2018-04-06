@@ -1,12 +1,13 @@
 var topButClass = document.getElementsByClassName('top_but');
 var buttonsClass = document.getElementsByClassName('buttons');
+
 // is this okay to use?
 for (var ind = 0; ind < topButClass.length; ind++){
 	document.getElementById(topButClass[ind].id).addEventListener('click',(ev)=>{
-		document.getElementById('food_display').style.display = 'none'
-		document.getElementById('etc1_display').style.display = 'none'
-		document.getElementById('etc2_display').style.display = 'none'
-		document.getElementById('etc3_display').style.display = 'none'
+		document.getElementById('western_display').style.display = 'none'
+		document.getElementById('korean_display').style.display = 'none'
+		document.getElementById('chinese_display').style.display = 'none'
+		document.getElementById('japanese_display').style.display = 'none'
 		document.getElementById('main_display').style.display = 'none'
 		document.getElementById(ev.target.id + '_display').style.display='block';
 	});

@@ -7,22 +7,32 @@
     <body>
         <div id='top_menu'>
             <div id="logo"></div>
-            <button id="food" class='top_but'>Food</button>
-            <button id='etc1' class='top_but'>ETC1</button>
-            <button id="etc2" class='top_but'>ETC2</button>
-            <button id="etc3" class='top_but'>ETC3</button>
+            <button id="main" class="top_but">Main</button>
+            <button id="western" class='top_but'>Western</button>
+            <button id='korean' class='top_but'>Korean</button>
+            <button id="chinese" class='top_but'>Chinese</button>
+            <button id="japanese" class='top_but'>Japanese</button>
         </div>
-        <div id="main_display" class="displays">Please click anything above</div>
-        <div id="food_display" style="display:none" class="displays">
+        <div id="main_display" class="displays">
+            <p1>Please enter your address</p1>
+            <div id="address_div">
+                <input type="text" id='address_input'>
+                <input type="submit" id="address_submit">
+            </div>
+            <div id="instruction">
+                <p2>Are you first time? Here is the basic step you can follow!</p2>
+            </div>
+        </div>
+        <div id="western_display" style="display:none" class="displays">
             <button class="buttons" id="1">Temp Button</button>
         </div>
-        <div id="etc1_display" style="display:none" class="displays">
+        <div id="korean_display" style="display:none" class="displays">
             <button class="buttons" id="2">Temp Button</button>
         </div>
-        <div id="etc2_display" style="display:none" class="displays">
+        <div id="chinese_display" style="display:none" class="displays">
             <button class="buttons" id="3">Temp Button</button>
         </div>
-        <div id="etc3_display" style="display:none" class="displays">
+        <div id="japanese_display" style="display:none" class="displays">
             <button class="buttons" id="4">Temp Button</button>
         </div>
         <div id="login_option" style="display:none;">Do you already have an account?
