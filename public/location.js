@@ -1,24 +1,35 @@
-function initMap(lati=49.2829581, lngi=-123.1181001) {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: {lat: lati , lng: lngi}
-        });
+const request = require('request');
 
-        var trafficLayer = new google.maps.TrafficLayer();
-        trafficLayer.setMap(map);
-        
-        var marker = new google.maps.Marker({
-          position: map.center,
-          map: map,
-        });
-}
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 49.283387, lng: -123.115097 },
+        zoom: 12
+    });
+    var messagebox = new google.maps.InfoWindow({ map: map });
 
-document.getElementById('address').addEventListener('keyup',(ev)=>{
-    if(ev.keyCode==13){
-        initMap(49.249126,-122.8909287);
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            var str_pos = JSON.stringify(position.coords.latitude + ',' + position.coords.longitude);
+
+            getAddress(str_pos, (errorMessage, results) => {
+                if (errorMessage) {
+                  var mesg_response = JSON.stringify(errorMessage);
+                } else {
+                  var mesg_response = JSON.stringify(results);
+                }
+            });
+            messagebox.setPosition(pos);
+            // messagebox.setContent(mesg_response);
+            map.setCenter(pos);
+
+        }, function() {
+            handleLocationError(true, messagebox, map.getCenter());
+        });
+    } else {
+        handleLocationError(false, messagebox, map.getCenter());
     }
-});
-
-document.getElementById('submit').addEventListener("click",()=>{
-    document.location.href = "./weather.html";
-});
+}
