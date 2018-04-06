@@ -1,0 +1,15 @@
+<body>
+	<div id="menu">
+		<button id='info'>Information about me</button>
+		<button id='rest'>REST</button>
+	</div>
+	
+	<script>
+		document.getElementById('info').addEventListener('click',()=>{
+			window.location.href = "http://localhost:8080/about.html";
+		});
+		document.getElementById('rest').addEventListener('click',()=>{
+			window.location.href = "http://localhost:8080/weather";
+		});
+	</script>
+</body>
