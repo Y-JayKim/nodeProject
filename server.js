@@ -24,7 +24,8 @@ app.get('/', (request, response, next) => {
 });
 
 app.post('/address_input', (request, response) => {
-    var address = request.add_input;
+	console.log(request.body.add_input);
+    var address = request.body.add_input;
 
 });
 app.get('/signin', (request, response) => {
