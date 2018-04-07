@@ -1,10 +1,16 @@
 .body{
     height: 100%;
-    position: absolute;
+/*    position: absolute;
     overflow: hidden;
+    size:fill;*/
 }
 #background{
-    background-size: fill;
+    width:100%;
+    position: fixed;
+    background-size:cover;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    background-position: center;
     opacity: 0.2;
     filter: alpha(opacity=50);
 }
