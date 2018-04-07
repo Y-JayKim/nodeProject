@@ -23,6 +23,13 @@ for (var buttonInd = 0; buttonInd < buttonsClass.length; buttonInd++){
 document.getElementById('signIn').addEventListener('click', ()=>{
 	document.location.href = "./signin.html";
 });
+document.getElementById('address_submit').addEventListener('click', ()=>{
+	if(document.getElementById('address_input').value == ""){
+		alert("Empty Value!");
+	}else{
+		alert("Alert Works!");
+	}
+})
 
 document.getElementById('guest').addEventListener('click', ()=>{
 	document.location.href = "./location.html";
