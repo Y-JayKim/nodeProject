@@ -1,19 +1,20 @@
 //------------------------variable-------------------------------------
 
 //------------------------------function-----------------------
-error: function(error){
-          if(error.responseText == 'showAlert')
-              alert("Please enter correct user name and password.")
-		}
+
 //-----------------------------interaction----------------------
 document.getElementById("loginBut").addEventListener("click",()=>{
-    document.location.href = "./location.html";
-});
-
-document.getElementById("passInput").addEventListener("keypress",(ev)=>{
-    if(ev.keyCode == 13){
-    	document.location.href = "./location.html";
-    };
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "/login_input", true);
+	xmlhttp.setRequestHeader('Content-type', "application/x-www-form-urlencoded");
+	xmlhttp.onreadystatechange = () => {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			if(xmlhttp.responseText == "invalid"){
+				alert("Invalid username or Password");
+			}
+		}
+	}
+	xmlhttp.send(`id_input=${document.getElementById("idInput").value}&pass_input=${document.getElementById("passInput").value}`);
 });
 
 document.getElementById('register').addEventListener("click",()=>{

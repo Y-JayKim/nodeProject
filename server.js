@@ -29,11 +29,15 @@ app.post('/address_input', (request, response) => {
 
 });
 app.get('/signin', (request, response) => {
-    response.render('signin.hbs');
+    response.render('signin');
 });
 
 app.post('/login_input', (request, response) => {
-	response.send(500,'showAlert')
+	username = request.body.id_input;
+	password = request.body.pass_input;
+	console.log(username);
+	console.log(password);
+	response.send("invalid");
 });
 app.get('/location', (request, response) => {
     response.render('location.hbs', { output: request.params.id });
