@@ -4,7 +4,7 @@
     overflow: hidden;
 }
 #background{
-    background-size: cover;
+    background-size: fill;
     opacity: 0.2;
     filter: alpha(opacity=50);
 }
@@ -192,6 +192,14 @@ p3{
 	margin:auto;
 	font-weight: bold;
 	font-size: 22px;
+}
+p4{
+    position: absolute;
+    left:10%;
+    top:50px;
+    margin:auto;
+    font-weight: bold;
+    font-size: 18px;
 }
 /*-----------------------Western Display----------------*/
 #w_list1{
