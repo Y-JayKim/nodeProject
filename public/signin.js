@@ -1,7 +1,10 @@
 //------------------------variable-------------------------------------
 
 //------------------------------function-----------------------
-
+error: function(error){
+          if(error.responseText == 'showAlert')
+              alert("Please enter correct user name and password.")
+		}
 //-----------------------------interaction----------------------
 document.getElementById("loginBut").addEventListener("click",()=>{
     document.location.href = "./location.html";

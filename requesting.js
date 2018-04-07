@@ -1,6 +1,9 @@
 const request = require('request');
+import address_input from "./public/main.js";
 
-var getAddress = (address, callback) => {
+var address = address_input;
+
+var getAddress = (callback) => {
 	request({
 	    url: 'http://maps.googleapis.com/maps/api/geocode/json' +
 	        '?address=' + encodeURIComponent(address),

@@ -18,8 +18,10 @@
         <div id="main_display" class="displays">
             <p1>Please enter your address</p1>
             <div id="address_div">
-                <input type="text" id='address_input'>
-                <input type="submit" id="address_submit">
+                <form action="/address_input" method="post">
+                    <input type="text" id='address_input' name="add_input">
+                    <button type="submit" id="address_submit">
+                </form>
             </div>
             <div id="instruction">
                 <p2>Are you first time? Here is the basic step you can follow!</p2>
