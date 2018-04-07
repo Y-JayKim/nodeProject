@@ -6,200 +6,27 @@
         <link href="main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <img id="background" src="./img/background.jpg">
         <div id='top_menu'>
             <div id="logo"></div>
-            <button id="main" class="top_but">Main</button>
-            <button id="closest" class="top_but" style="display:none"></button>
-            <button id="western" class='top_but'>Western</button>
-            <button id='korean' class='top_but'>Korean</button>
-            <button id="chinese" class='top_but'>Chinese</button>
-            <button id="japanese" class='top_but'>Japanese</button>
+            <button id="main" class="top_but">MAIN</button>
         </div>
         <div id="main_display" class="displays">
-            <p1>Please enter your address</p1>
+            <p1>Please enter your address to continue as a guest</p1>
             <div id="address_div">
-                <input type="text" id='address_input'>
-                <input type="submit" id="address_submit">
+                <form action="/address_input" method="post">
+                    <input type="text" id='address_input' name="add_input">
+                    <button type="submit" id="address_submit"></button>
+                </form>
             </div>
+<!-- 여기서부터 -->
+            <p2>If you have an account, press login!</p2>
+            <div id="login_div">
+                <button type="submit" id="login_submit">날 눌러줘><</button>
+            </div>
+<!-- 여기까지 -->
             <div id="instruction">
-                <p2>Are you first time? Here is the basic step you can follow!</p2>
-            </div>
-        </div>
-        <div id="closest_display" style="display:none"></div>
-        <div id="western_display" style="display:none" class="displays">
-            <div id="w_list1" class="lists">
-                <img id="w_img1" class="list_imgs">
-                <div id="w_info1" class="list_infos">
-                    Explanation of the restaurant
-                </div>
-                <button id="w_button1" class="list_buttons"></button>
-            </div>
-            <div id="w_list2" class="lists">
-                <img id="w_img2" class="list_imgs">
-                <div id="w_info2" class="list_infos"></div>
-                <button id="w_button2" class="list_buttons"></button>
-            </div>
-            <div id="w_list3" class="lists">
-                <img id="w_img3" class="list_imgs">
-                <div id="w_info3" class="list_infos"></div>
-                <button id="w_button3" class="list_buttons"></button>
-            </div>
-            <div id="w_list4" class="lists">
-                <img id="w_img4" class="list_imgs">
-                <div id="w_info4" class="list_infos"></div>
-                <button id="w_button4" class="list_buttons"></button>
-            </div>
-            <div id="w_list5" class="lists">
-                <img id="w_img5" class="list_imgs">
-                <div id="w_info5" class="list_infos"></div>
-                <button id="w_button5" class="list_buttons"></button>
-            </div>
-            <div id="w_list6" class="lists">
-                <img id="w_img6" class="list_imgs">
-                <div id="w_info6" class="list_infos"></div>
-                <button id="w_button6" class="list_buttons"></button>
-            </div>
-            <div id="w_list7" class="lists">
-                <img id="w_img7" class="list_imgs">
-                <div id="w_info7" class="list_infos"></div>
-                <button id="w_button7" class="list_buttons"></button>
-            </div>
-            <div id="w_list8" class="lists">
-                <img id="w_img8" class="list_imgs">
-                <div id="w_info8" class="list_infos"></div>
-                <button id="w_button8" class="list_buttons"></button>
-            </div>
-        </div>
-        <div id="korean_display" style="display:none" class="displays">
-            <div id="k_list1" class="lists">
-                <img id="k_img1" class="list_imgs">
-                <div id="k_info1" class="list_infos">
-                    Explanation of the restaurant
-                </div>
-                <button id="k_button1" class="list_buttons"></button>
-            </div>
-            <div id="k_list2" class="lists">
-                <img id="k_img2" class="list_imgs">
-                <div id="k_info2" class="list_infos"></div>
-                <button id="k_button2" class="list_buttons"></button>
-            </div>
-            <div id="k_list3" class="lists">
-                <img id="k_img3" class="list_imgs">
-                <div id="k_info3" class="list_infos"></div>
-                <button id="k_button3" class="list_buttons"></button>
-            </div>
-            <div id="k_list4" class="lists">
-                <img id="k_img4" class="list_imgs">
-                <div id="k_info4" class="list_infos"></div>
-                <button id="k_button4" class="list_buttons"></button>
-            </div>
-            <div id="k_list5" class="lists">
-                <img id="k_img5" class="list_imgs">
-                <div id="k_info5" class="list_infos"></div>
-                <button id="k_button5" class="list_buttons"></button>
-            </div>
-            <div id="k_list6" class="lists">
-                <img id="k_img6" class="list_imgs">
-                <div id="k_info6" class="list_infos"></div>
-                <button id="k_button6" class="list_buttons"></button>
-            </div>
-            <div id="k_list7" class="lists">
-                <img id="k_img7" class="list_imgs">
-                <div id="k_info7" class="list_infos"></div>
-                <button id="k_button7" class="list_buttons"></button>
-            </div>
-            <div id="k_list8" class="lists">
-                <img id="k_img8" class="list_imgs">
-                <div id="k_info8" class="list_infos"></div>
-                <button id="k_button8" class="list_buttons"></button>
-            </div>
-        </div>
-        <div id="chinese_display" style="display:none" class="displays">
-            <div id="c_list1" class="lists">
-                <img id="c_img1" class="list_imgs">
-                <div id="c_info1" class="list_infos">
-                    Explanation of the restaurant
-                </div>
-                <button id="c_button1" class="list_buttons"></button>
-            </div>
-            <div id="c_list2" class="lists">
-                <img id="c_img2" class="list_imgs">
-                <div id="c_info2" class="list_infos"></div>
-                <button id="c_button2" class="list_buttons"></button>
-            </div>
-            <div id="c_list3" class="lists">
-                <img id="c_img3" class="list_imgs">
-                <div id="c_info3" class="list_infos"></div>
-                <button id="c_button3" class="list_buttons"></button>
-            </div>
-            <div id="c_list4" class="lists">
-                <img id="c_img4" class="list_imgs">
-                <div id="c_info4" class="list_infos"></div>
-                <button id="c_button4" class="list_buttons"></button>
-            </div>
-            <div id="c_list5" class="lists">
-                <img id="c_img5" class="list_imgs">
-                <div id="c_info5" class="list_infos"></div>
-                <button id="c_button5" class="list_buttons"></button>
-            </div>
-            <div id="c_list6" class="lists">
-                <img id="c_img6" class="list_imgs">
-                <div id="c_info6" class="list_infos"></div>
-                <button id="c_button6" class="list_buttons"></button>
-            </div>
-            <div id="c_list7" class="lists">
-                <img id="c_img7" class="list_imgs">
-                <div id="c_info7" class="list_infos"></div>
-                <button id="c_button7" class="list_buttons"></button>
-            </div>
-            <div id="c_list8" class="lists">
-                <img id="c_img8" class="list_imgs">
-                <div id="c_info8" class="list_infos"></div>
-                <button id="c_button8" class="list_buttons"></button>
-            </div>
-        </div>
-        <div id="japanese_display" style="display:none" class="displays">
-            <div id="j_list1" class="lists">
-                <img id="j_img1" class="list_imgs">
-                <div id="j_info1" class="list_infos">
-                    Explanation of the restaurant
-                </div>
-                <button id="j_button1" class="list_buttons"></button>
-            </div>
-            <div id="j_list2" class="lists">
-                <img id="j_img2" class="list_imgs">
-                <div id="j_info2" class="list_infos"></div>
-                <button id="j_button2" class="list_buttons"></button>
-            </div>
-            <div id="j_list3" class="lists">
-                <img id="j_img3" class="list_imgs">
-                <div id="j_info3" class="list_infos"></div>
-                <button id="j_button3" class="list_buttons"></button>
-            </div>
-            <div id="j_list4" class="lists">
-                <img id="j_img4" class="list_imgs">
-                <div id="j_info4" class="list_infos"></div>
-                <button id="j_button4" class="list_buttons"></button>
-            </div>
-            <div id="j_list5" class="lists">
-                <img id="j_img5" class="list_imgs">
-                <div id="j_info5" class="list_infos"></div>
-                <button id="j_button5" class="list_buttons"></button>
-            </div>
-            <div id="j_list6" class="lists">
-                <img id="j_img6" class="list_imgs">
-                <div id="j_info6" class="list_infos"></div>
-                <button id="j_button6" class="list_buttons"></button>
-            </div>
-            <div id="j_list7" class="lists">
-                <img id="j_img7" class="list_imgs">
-                <div id="j_info7" class="list_infos"></div>
-                <button id="j_button7" class="list_buttons"></button>
-            </div>
-            <div id="j_list8" class="lists">
-                <img id="j_img8" class="list_imgs">
-                <div id="j_info8" class="list_infos"></div>
-                <button id="j_button8" class="list_buttons"></button>
+                <p3>어서와 처음이지? Here is the basic step you can follow!</p3>
             </div>
         </div>
         <div id="login_option" style="display:none;">Do you already have an account?
