@@ -241,7 +241,7 @@ p5{
     left:100px;
     top:120px;
     width:500px;
-    height:500px;
+    height:450px;
 }
 #info{ 
     position: absolute;
@@ -286,7 +286,7 @@ p5{
     top:150px;
     margin:auto;
     width:700px;
-    height:400px;
+    height:650px;
     border-top: rgb(165,0,0) 2px solid
 }
 #about_left{
@@ -311,13 +311,12 @@ h2{
     font-weight: bold;
     font-family: Sans-serif;
 }
-
 h1{
     font-family: Sans-serif;
 }
 #about_img{
     position: absolute;
     width:100%;
-    height:auto;
     top:300px;
+    height:auto;
 }
