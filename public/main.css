@@ -72,6 +72,51 @@
 	height:1200px;
 }
 /*-------------------------Main Display-------------------------------------*/
+#yes_address{
+    height: 150px;
+    width:100%;
+    border:white 2px solid;
+}
+#username_info{
+    position: absolute;
+    left:0px;
+    right:400px;
+    top:10px;
+    margin:auto;
+    width:200px;
+    height:100px;
+    background-color:lightblue;
+    border-radius: 20px;
+    font-size:25px;
+    text-align:center;
+}
+#address_info{
+    position: absolute;
+    left:400px;
+    right:0px;
+    top:10px;
+    margin:auto;
+    width:200px;
+    height:100px;
+    background-color:lightblue;
+    border-radius: 20px;
+    font-size:25px;
+    text-align:center;
+}
+#re_address{
+    position: absolute;
+    left:0px;
+    right:0px;
+    top:30px;
+    margin:auto;
+    width:100px;
+    height:70px;
+    background-color:black;
+    font:17px bold;
+    border-radius:20px;
+    color:white;
+    text-align:center;
+}
 p1{
 	position: absolute;
 	left:7%;

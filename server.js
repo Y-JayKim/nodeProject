@@ -20,24 +20,46 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
-
+//-----------------------------------------------------------------------------------------------
+var lat = '',
+	lng = '',
+	username = 'Guest',
+	address = 'BCIT',
+	validity = 0;
 //-----------------------------------main page--------------------------------------------------
 app.get('/', (request, response) => {
-    response.render('main');
+    response.render('main', {
+    	validity: validity,
+    	username: username,
+    	address: address
+    });
 });
 
 app.post('/address_check', (request, response) => {
 	address = request.body.address;
-	address_finder.getAddress(address, (errorMessage, results) =>{
-		if (errorMessage){
-			response.send('invalid')
-		} else{
-			var lat = JSON.stringify(results.lat, undefined, 2),
-				lng = JSON.stringify(results.lng, undefined, 2);
-			response.send('valid')							
-		}
-	});
+	if(request.body.validity == 1){
+		address_finder.getAddress(address, (errorMessage, results) =>{
+			if (errorMessage){
+				response.send('invalid');
+			} else{
+				lat = JSON.stringify(results.lat, undefined, 2)
+				lng = JSON.stringify(results.lng, undefined, 2)
+				response.send('valid');
+				validity = 1;
+			}
+		});
+	}else if(request.body.validity == 0){
+		validity = 0;
+		response.send('reload');
+	}
 	
+	
+});
+
+app.post('/validity_reload', (request, response)=>{
+	console.log('in');
+	validity = 0;
+	response.send('valid');
 });
 //-----------------------------------signin page--------------------------------------------------
 app.get('/signin', (request, response) => {
