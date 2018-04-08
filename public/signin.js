@@ -1,7 +1,7 @@
 //------------------------variable-------------------------------------
 
 //------------------------------function-----------------------
-function login_submit(){
+function login_submit(validity){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "/login_input", true);
 	xmlhttp.setRequestHeader('Content-type', "application/x-www-form-urlencoded");
@@ -10,17 +10,18 @@ function login_submit(){
 			if(xmlhttp.responseText == "invalid"){
 				alert("Invalid username or Password");
 			}
-			else{
-				xmlhttp.open("POST", "/location", true);
+			else if(xmlhttp.responseText == "valid"){
+				alert('It is Valid');
+				window.location = '/';
 			}
 		}
 	}
-	xmlhttp.send(`id_input=${document.getElementById("idInput").value}&pass_input=${document.getElementById("passInput").value}`);
+	xmlhttp.send(`id_input=${document.getElementById("idInput").value}&pass_input=${document.getElementById("passInput").value}&validity=${validity}`);
 }
 
 //-----------------------------interaction----------------------
 document.getElementById("loginBut").addEventListener("click",()=>{
-	login_submit();
+	login_submit(1);
 });
 
 document.getElementById('register').addEventListener("click",()=>{

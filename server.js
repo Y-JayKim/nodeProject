@@ -26,16 +26,18 @@ var lat = '',
 	username = 'Guest',
 	address = 'BCIT',
 	validity = 0;
-var userlog = ''
+var userlog = '',
+	userlog1 = '{"jay":["123","460 Westview St"]}';
 //---------------------------------------functions-----------------------------------------------
 function readJsonFile(inputFile) {
-    fs.readFile(inputFile, (err, data) =>{
-	    if (err) {
-	        throw err;
-	    }
-	    userlog = JSON.parse(data);
-	    console.log(typeof userlog);   
-	})
+ //    fs.readFile(inputFile, (err, data) =>{
+	//     if (err) {
+	//         throw err;
+	//     }
+	//     userlog = JSON.parse(data);
+	//     console.log(typeof userlog);   
+	// })
+	userlog = JSON.parse(userlog1);
 }
 //-----------------------------------main page--------------------------------------------------
 app.get('/', (request, response) => {
@@ -74,12 +76,14 @@ app.get('/signin', (request, response) => {
 });
 
 app.post('/login_input', (request, response, next) => {
-    username = request.body.id_input;
-	password = request.body.pass_input;
-
-	console.log(typeof userlog);
-	// console.log(userlog[username]);
-	if (String(username) in userlog && String(password) == userlog[username]){
+    username_check = request.body.id_input;
+	password_check = request.body.pass_input;
+	validity_check = request.body.validity;
+	console.log(userlog[username][0]);
+	if (String(username_check) in userlog && String(password_check) == userlog[username_check][0]){
+		username = username_check;
+		password = password_check;
+		validity = validity_check;
 		response.send('valid');
 	}else{
 		response.send("invalid");
@@ -90,6 +94,9 @@ app.get("/register", (request, response) =>{
 	response.render("register");
 });
 
+app.post("/register_check", (request, reponse) => {
+	reponse.send('valid')
+})
 app.get("/findid", (request, response) =>{
 	response.render('findid');
 });

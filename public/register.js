@@ -1,6 +1,6 @@
+
 var info = [];
 var strInfo = "";
-var localname = localStorage.getItem("name");
 var username = document.getElementById("username");
 //-----------------------------function----------------------
 function errorTest(){
@@ -17,42 +17,39 @@ function errorTest(){
         }    
     }
     if(document.getElementById("password1").value != document.getElementById("password2").value){
-                alert("These passwords don't match");
-                return false;
-    }
-    for (var l = 0; l < localStorage.length; l++) {
-        if(localStorage.key(l)==document.getElementById("username").value){
-            alert("The username is already exist");
-            return false;
-        }
+        alert("These passwords don't match");
+        return false;
     }
     if(username.value.indexOf(';') > -1){
         alert("You cannot use ';' for your username");
         return false;
     }
-    if(username.value=='whoIsLogging' ||username.value=="justClicked"||username.value=="guest"){
-        alert("Please use other username")
+    if(username.value=="guest" || username.value=="Guest" ){
+        alert("Username cannot be guest please use other")
         return false;
     }
     return true;
 }
 
-function localSaving(){
-    for(var i in document.getElementsByClassName("q")){
-        if(document.getElementById(i) !=null){
-            info.push(document.getElementById(i).value);
-            strInfo = info.join(';')
+function login_submit(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", "/register_check", true);
+    xmlhttp.setRequestHeader('Content-type', "application/x-www-form-urlencoded");
+    xmlhttp.onreadystatechange = () => {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            if(xmlhttp.responseText == "invalid"){
+                alert("Invalid username please use other username");
+            }
+            else{
+                window.location = '/signin';
+            }
         }
     }
-    localStorage.setItem(info[2],strInfo);
-    localStorage.setItem('whoIsLogging','');
-    localStorage.setItem('whoIsLogging',info[2]);   
-
+    xmlhttp.send(`username=${document.getElementById("username").value}&password=${document.getElementById("password1").value}`);
 }
 //------------------interaction-------------------------------
-document.getElementById("submit").addEventListener("click",function(){
+document.getElementById('submit').addEventListener('click',()=>{
     if(errorTest()){
-        localSaving();
-        document.location.href = "../login.html";
+        login_submit();
     }
-})
+});
