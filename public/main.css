@@ -1,8 +1,8 @@
 #background{
-    height:100%;
-    width:100%;
     position: fixed;
-    left:0px;
+    width:100%;
+    height:100%;
+    left:0%;
     background-size:cover;
     background-repeat: repeat-y;
     background-attachment: fixed;
@@ -61,8 +61,7 @@
 	position: absolute;
 	top:70px;
 	left:0px;
-	width:1255px;
-	height:1200px;
+	width:100%;
 }
 /*-------------------------Main Display-------------------------------------*/
 #yes_address{
@@ -117,6 +116,13 @@
     text-align:center;
     font-family: Sans-serif;
 }
+p{
+    position: relative;
+    margin:auto;
+    left:4%;
+    top:3%;
+    font-family: Sans-serif;
+}
 p1{
 	position: absolute;
 	left:10%;
@@ -131,83 +137,83 @@ p1{
 	left:90px;
 	margin:auto;
 	width:500px;
-	height:50px;
+	height:400px;
 	background: white;
+    border:2px solid black;
+    border-radius: 25px;
 }
-#address_input{
-	position: absolute;
+.guest_address{
+	position: relative;
 	top:7px;
 	left:10px;
-	width:400px;
-	height:30px;
+	width:450px;
+	height:40px;
 	font-size: 25px;
+    margin:10px;
 }
 #address_submit{
 	position: absolute;
-	top:7px;
-	height:35px;
-	width:70px;
-	left:420px;
+	bottom:7%;
+	height:50px;
+	width:400px;
+	left:10%;
 	border:none;
 	background:rgb(165,0,0);
 	color:white;
 	font-weight: bold;
 	cursor:pointer;
+    font-size:22px;
+    border-radius: 25px;
+}
+#login_div{
+    position: absolute;
+    top:50px;
+    right:90px;
+    margin:auto;
+    width:380px;
+    height:400px;
+    background: white;
+    border:2px solid black;
+    border-radius: 25px;
 }
 p2{
     position: absolute;
-    left:63%;
-    top:15px;
+    left:6%;
+    top:-9%;
     margin:auto;
     font-weight: bold;
     font-size: 19px;
     font-family: Sans-serif;
 }
-#login_div{
-    position: absolute;
-    top:50px;
-    right:150px;
-    margin:auto;
-    width:300px;
-    height:50px;
-    background: white;
+p3{
+    position: fixed;
+    left:53%;
+    top:50%;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Sans-serif;
 }
+
 #login_submit{
     position: absolute;
-    top:7px;
-    height:35px;
-    width:280px;
-    right:10px;
+    bottom:7%;
+    height:50px;
+    width:90%;
+    left:5%;
     border:none;
     background:rgb(165,0,0);
     color:white;
     font-weight: bold;
     cursor:pointer;
+    font-size:22px;
+    border-radius: 25px;
 }
-#instruction{
-	position: absolute;
-	width:100%;
-	height:75%;
-	top:150px;
-    border-top:2px solid rgb(165,0,0);
-}
-p3{
-	position: absolute;
-	left:29%;
-	top:15px;
-	font-weight: bold;
-	font-size: 22px;
-    font-family: Sans-serif;
-}
-p4{
+#deliverypng{
     position: absolute;
-    left:10%;
-    top:50px;
-    font-weight: bold;
-    font-size: 18px;
-    font-family: Sans-serif;
+    width:60%;
+    left:18%;
+    top:5%;
 }
-
 #next_submit{
     position: absolute;
     border:none;
