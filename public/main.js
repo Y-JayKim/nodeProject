@@ -45,6 +45,9 @@ document.getElementById('login_submit').addEventListener('click',()=>{
 
 document.getElementById('re_address').addEventListener('click',()=>{
 	address_check(0);
+});
+document.getElementById('next_submit').addEventListener('click',()=>{
+	window.location="/location";
 })
 //--------------------------------contact map-----------------------------------------------
 function initMap() {

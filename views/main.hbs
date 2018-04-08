@@ -36,20 +36,22 @@
                 </div>
                 <button id='re_address'>Re-type<br>address</button>
             </div>
-            <script>
-                if ({{{validity}}} == 0){
-                    document.getElementById("no_address").style.display = "block";
-                    document.getElementById("yes_address").style.display = "none";
-                }else if({{{validity}}} == 1){
-                    document.getElementById("no_address").style.display = "none";
-                    document.getElementById("yes_address").style.display = "block";
-                }
-            </script>
             <div id="instruction">
                 <p3>어서와 처음이지? Here is the basic step you can follow!</p3>
                 <p4>This is instructions</p4>
             </div>
-            <button type="submit" id="next_submit">Next</button>
+            <button type="submit" id="next_submit" style="display:none;">Next</button>
+             <script>
+                if ({{{validity}}} == 0){
+                    document.getElementById("no_address").style.display = "block";
+                    document.getElementById("yes_address").style.display = "none";
+                    document.getElementById('next_submit').style.display = "none";
+                }else if({{{validity}}} == 1){
+                    document.getElementById("no_address").style.display = "none";
+                    document.getElementById("yes_address").style.display = "block";
+                    document.getElementById('next_submit').style.display = "block";
+                }
+            </script>
         </div>
         <div id="contact_display" class="displays" style="display:none;">
             <p5>CONTACT INFORMATION</p5>

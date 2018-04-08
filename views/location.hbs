@@ -12,7 +12,79 @@
     	<div id='logo'></div>
         <div id="map"></div>
         <div id="explanation"></div>
-        <script src="location.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEoiFzG0XaPOHqYqQ6AGAcNBosbJQ7RUw&libraries=places&callback=initMap" async defer></script>
+        <script>
+            var map;
+            var infowindow,
+                the_name;
+            var latitu = {{{latitu}}},
+                longitu = {{{longitu}}}
+            function initMap() {
+                var pyrmont = {lat: latitu, lng: longitu};
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: pyrmont,
+                    zoom: 15
+                });
+
+                infowindow = new google.maps.InfoWindow();
+                var service = new google.maps.places.PlacesService(map);
+                service.nearbySearch({
+                    location: pyrmont,
+                    radius: 500,
+                    type: ['restaurant']
+                }, callback);
+            }
+
+            function callback(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                        createMarker(results[i]);
+
+                    }
+                }
+            }
+
+            function createMarker(place) {
+                var placeLoc = place.geometry.location;
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: place.geometry.location
+                });
+                console.log(place.opening_hours.weekday_text);
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(place.name+"<br><br>"+`<button onclick="myFunction()">SELECT</button>`);
+                    the_name = place.name
+                    infowindow.open(map, this);
+                    // addtodiv(place)
+                });
+            }
+
+            function myFunction(name) {
+                // infowindow.setContent('<div style="background-color: yellow">' + infowindow.getContent() + "</div>");
+                var newDiv = document.createElement("div");
+                newDiv.classname = 'order_div';
+                newDiv.innerHTML = the_name;
+                // var newContent = document.createTextNode("Hi there and greetings!");
+
+                // newDiv.appendChild(newContent);
+
+                document.getElementById('explanation').appendChild(newDiv);
+            }
+
+            function addtodiv(place) {
+                var placeLoc = place.geometry.location;
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: place.geometry.location
+                });
+
+                var newDiv = document.createElement("div");
+                // newDiv.className = 'theNewDiv'
+                var newContent = document.createTextNode(place.name);
+                newDiv.appendChild(newContent);
+                document.getElementById('explanation').appendChild(newDiv);
+            }
+        </script>
     </body>
 </html>

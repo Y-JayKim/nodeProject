@@ -102,7 +102,7 @@ app.get("/findid", (request, response) =>{
 });
 //-----------------------------------location page--------------------------------------------------
 app.get('/location', (request, response) => {
-    response.render('location', { output: request.params.id });
+    response.render('location', {latitu:49.2834511, longitu:-123.1174435});
 });
 
 app.get('/weather', (request, response) => {
