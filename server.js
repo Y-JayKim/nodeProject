@@ -27,7 +27,7 @@ var lat = '49.2834444',
 	username = 'Guest',
 	address = '',
 	validity = 0;
-var userlog = {jay:{password:"123",address:"204-460 Westview St, Coquitlam, BC, Canada"},min:{password:"123",address:"minsu st, vancouver, BC, Canada"},Guest:{}};
+var userlog = {jay:{password:"123",address:"204-460 Westview St, Coquitlam, BC, Canada"},min:{password:"123",address:"minsu st, vancouver, BC, Canada"}};
 //---------------------------------------functions-----------------------------------------------
 function readJsonFile() {
 	fs.readFile('./username.json', (err, data)=> {

@@ -66,57 +66,92 @@
 }
 /*-------------------------Main Display-------------------------------------*/
 #yes_address{
-    /*position:absolute;*/
-    height: 150px;
-    width:100%;
-    border:white 2px solid;
+    position:absolute;
+    top:10%;
+    left:5%;
+    right:5%;
+    height: auto;
+    width:90%;
+    border:rgb(165,0,0) 2px solid;
 }
+#user_info{
+    position: absolute;
+    left:30%;
+}
+
+#user_default{
+    position:absolute;
+    top:30px;
+    left:-300px;
+    width:250px;
+    height:250px;
+}
+
 #username_info{
     position: absolute;
-    left:0px;
-    right:400px;
-    top:10px;
+    top:50px;
     margin:auto;
-    width:200px;
-    height:100px;
-    background-color:lightblue;
+    width:300px;
+    height:40px;
     border-radius: 20px;
     font-size:25px;
     text-align:center;
     font-family: Sans-serif;
-    background-color:rgb(165,0,0);
-    color:white;
+    border:rgb(0,208,0) 2px solid;
+    color:black;
+    padding-top:10px; 
 }
 #address_info{
     position: absolute;
-    left:400px;
-    right:0px;
-    top:10px;
+    top:120px;
     margin:auto;
-    width:200px;
-    height:100px;
-    background-color:lightblue;
+    width:650px;
+    height:160px;
     border-radius: 20px;
     font-size:25px;
     text-align:center;
     font-family: Sans-serif;
-    background-color:rgb(165,0,0);
-    color:white;
+    border:rgb(0,208,0) 2px solid;
+    color:black;
+    padding-top:10px; 
 }
 #re_address{
     position: absolute;
-    left:0px;
-    right:0px;
-    top:30px;
+    left:0;
+    right:0;
+    bottom:7%;
     margin:auto;
-    width:100px;
-    height:70px;
-    background-color:black;
-    font:17px bold;
-    border-radius:20px;
+    width:50%;
+    height:30%;
+    background-color:rgb(165,0,0,0.8);
+    font:20px bold;
+    border-radius:15px;
     color:white;
     text-align:center;
     font-family: Sans-serif;
+    cursor:pointer;
+}
+.user_info_separator{
+    position: absolute;
+    top:41%;
+    width:40%;
+    height:2%;
+    background-color:black;
+}
+#left_sep{
+    position: absolute;
+    left:5%;
+}
+#right_sep{
+    position: absolute;
+    right:5%;
+}
+p4{
+    position: absolute;
+    top:30%;
+    left:46%;
+    font-family: Monospace;
+    font: 35px bold;
 }
 p{
     position: relative;
@@ -219,7 +254,7 @@ p3{
 #next_submit{
     position: absolute;
     border:none;
-    bottom:-100px;
+    bottom:-150px;
     left:42%;
     width:210px;
     height:40px;
