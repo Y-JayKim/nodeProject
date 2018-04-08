@@ -1,0 +1,65 @@
+body{
+    background:url(img/background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#display{
+    position: absolute;
+    height:auto;
+    width:400px;
+    left:0px;
+    right:0px;
+    top:50px;
+    margin: auto;
+    background: rgb(217, 221, 217);
+    border-radius: 15px;
+}
+#theHeader{
+    position: relative;
+    text-align: center;
+    color:rgb(103, 105, 104);
+    font-size:25px;
+    margin: 15px;
+}
+.questions{
+    width:100%;
+    margin:15px;
+    margin-right: 15px;
+}
+p{
+    font-weight: bold;
+    width:100%;
+    margin-bottom: 0px;
+}
+#first{
+    width:150px;
+}
+#last{
+    width:150px;
+}
+#day{
+    width:100px;
+}
+#year{
+    width:100px;
+}
+#color{
+    width:40%;
+}
+#shoeSize{
+    width:40%;
+}
+#weight{
+    width:40%;
+}
+#submit{
+    position: relative;
+    left:38%;
+    width:100px;
+    height:50px;
+    background:lightblue;
+    border-radius: 15px;
+    cursor:pointer;
+}

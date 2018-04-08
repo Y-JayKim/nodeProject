@@ -26,6 +26,23 @@ var lat = '',
 	username = 'Guest',
 	address = 'BCIT',
 	validity = 0;
+var userlog = ''
+//---------------------------------------functions-----------------------------------------------
+function processFile(inputFile) {
+    var fs = require('fs'),
+        readline = require('readline'),
+        instream = fs.createReadStream(inputFile),
+        outstream = new (require('stream'))(),
+        file = readline.createInterface(instream, outstream);
+     
+    file.on('line', (line) => {
+        userlog = JSON.parse(line);
+    });
+    
+    file.on('close', (line) => {
+        console.log('done reading file.');
+    });
+}
 //-----------------------------------main page--------------------------------------------------
 app.get('/', (request, response) => {
     response.render('main', {
@@ -61,13 +78,27 @@ app.get('/signin', (request, response) => {
 });
 
 app.post('/login_input', (request, response) => {
+	setTimeout(()=>{
+		processFile(__dirname + '/username.json');
+	}, 1000);
+	
 	username = request.body.id_input;
 	password = request.body.pass_input;
-	console.log(username);
-	console.log(password);
-	response.send("invalid");
+	console.log(userlog)
+	if (username in userlog && password == userlog(username)){
+		response.send('valid');
+	}else{
+		response.send("invalid");
+	}
 });
 
+app.get("/register", (request, response) =>{
+	response.render("register");
+});
+
+app.get("/findid", (request, response) =>{
+	response.render('findid');
+});
 //-----------------------------------location page--------------------------------------------------
 app.get('/location', (request, response) => {
     response.render('location', { output: request.params.id });

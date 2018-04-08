@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>register</title>
+        <link href="register.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div id="display">
+            <div id="theHeader">
+            Create your Jay's Fashion Account
+            </div>
+            <div class="questions">
+                <p>Name</p>
+                <input type="text" id="first" class="q" placeholder="First"/>
+                <input type="text" id="last" class="q" placeholder="Last"/>
+            </div>
+            <div class="questions">
+                <p>Choose your username</p>
+                <input type="text" id="username" class="q" placeholder="Username"/>
+            </div>
+            <div class="questions">
+                <p>Create a password</p>
+                <input type="password" id="password1" class="q"/>
+            </div>
+            <div class="questions">
+                <p>Confirm your password</p>
+                <input type="password" id="password2" class="q"/>
+            </div>
+            <div class="questions">
+                <p>Birthday</p>
+                <select id="month" class="q">
+                    <option value="Month">Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <input type="text" id="day" class="q"  placeholder="Day" />
+                <input type="text" id="year" class="q"  placeholder="Year" />
+            </div>
+            <div class="questions">
+                <p>Gender</p>
+                <select id="gender" class="q">
+                    <option value="gender">I am...</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+            </div>
+            <div class="questions">
+                <p>Height</p>
+                <input type="text" id="height" class="q"  placeholder="How tall are you?" />
+                <span>cm</span>
+            </div>
+            <div class="questions">
+                <p>Shoe Size</p>
+                <input type="number" id="shoeSize" class="q"  min=0 max=20 placeholder="Shoe Size 1 - 20" />
+            </div>
+            <div class="questions">
+                <p>Favoirte Color and Weight</p>
+                <select id="color" class="q">
+                    <option value="color">Favorite Color</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                </select>
+            </div>
+            <div class="questions">
+                <p>Weight</p>
+                <input type="number" id="weight" class="q" min=0 max=440 placeholder="Yout weight" />
+                <span>kg</span>
+            </div>
+            <button id="submit">Submit</button>
+            
+        </div>
+        <script src="register.js"></script>
+    </body>
+</html>

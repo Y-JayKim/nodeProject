@@ -1,9 +1,7 @@
 //------------------------variable-------------------------------------
 
 //------------------------------function-----------------------
-
-//-----------------------------interaction----------------------
-document.getElementById("loginBut").addEventListener("click",()=>{
+function login_submit(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "/login_input", true);
 	xmlhttp.setRequestHeader('Content-type', "application/x-www-form-urlencoded");
@@ -18,10 +16,18 @@ document.getElementById("loginBut").addEventListener("click",()=>{
 		}
 	}
 	xmlhttp.send(`id_input=${document.getElementById("idInput").value}&pass_input=${document.getElementById("passInput").value}`);
+}
+
+//-----------------------------interaction----------------------
+document.getElementById("loginBut").addEventListener("click",()=>{
+	login_submit();
 });
 
 document.getElementById('register').addEventListener("click",()=>{
-    alert("Create Account");
+    window.location="/register";
+});
+document.getElementById('forget').addEventListener("click",()=>{
+    window.location="/findid";
 });
 
 document.getElementById('forget').addEventListener('click',()=>{
