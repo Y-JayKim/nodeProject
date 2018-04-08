@@ -5,6 +5,7 @@ const request = require('request');
 const bodyParser = require('body-parser')
 
 const address_finder = require('./address_finder.js')
+const weather_file = require('./public/weather.js');
 
 var app = express();
 
@@ -21,8 +22,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 //-----------------------------------------------------------------------------------------------
-var lat = '',
-	lng = '',
+var lat = '49.2834444',
+	lng = '-123.1196331',
 	username = 'Guest',
 	address = 'BCIT',
 	validity = 0;
@@ -105,8 +106,14 @@ app.get('/location', (request, response) => {
     response.render('location', {latitu:49.2834511, longitu:-123.1174435});
 });
 
+//-----------------------------------weather Page-----------------------------------------------------
 app.get('/weather', (request, response) => {
-    response.render('weather', { root: __dirname })
+	weather_file.weather(lat, lng).then((result)=>{
+		weather_body = result;
+		response.render('weather', {summary: weather_body.summary,icon:weather_body.icon,temp:weather_body.temperature,humid:weather_body.humidity,winds:weather_body.windSpeed})
+	}).catch((error)=>{
+		console.log(error)
+	})
 });
 
 app.listen(port, () => {

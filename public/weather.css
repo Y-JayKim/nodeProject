@@ -39,3 +39,23 @@ body{
     border:black 2px solid;
     text-align: center;
 }
+h1{
+    position: absolute;
+    left:35%;
+}
+#weather_icon{
+    position: absolute;
+    left:0px;
+    right:0px;
+    top:10px;
+    margin:auto;
+    width:100px;
+    height:100px;
+    background-size: contain;
+}
+#explanation{
+    position: absolute;
+    left:0px;
+    top:120px;
+    font:20px bold;
+}

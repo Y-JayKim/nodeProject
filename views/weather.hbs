@@ -7,8 +7,26 @@
     </head>
     <body>
         <div id="logo"></div>
-        <div id='display'></div>
-        <div id="weather_display">Today's weather</div>
-        <script src="weather.js"></script>
+        <div id='display'>
+            <h1>Summary
+        </div>
+        <div id="weather_display">
+            Today's weather<br>
+            <img id="weather_icon">
+            <div id="explanation">
+                {{{summary}}}<br><br>temperature: {{{temp}}}<br>humiditiy: {{{humid}}}<br>wind speed: {{{winds}}}
+            </div>
+        </div>
+        <script>
+            var icon = `{{{icon}}}`;
+            
+            if (icon.indexOf('cloudy') != -1){
+                document.getElementById('weather_icon').src = 'https://d30y9cdsu7xlg0.cloudfront.net/png/204253-200.png';
+            }else if(icon.indexOf('sun') != -1){
+                document.getElementById('weather_icon').src = 'https://image.flaticon.com/icons/svg/53/53565.svg';
+            }else if(icon.indexOf('rainny') != -1){
+                document.getElementById('weather_icon').src = 'https://cdn3.iconfinder.com/data/icons/weather-58/50/rain-512.png';
+            }
+        </script>
     </body>
 </html>
