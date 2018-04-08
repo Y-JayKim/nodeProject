@@ -13,32 +13,36 @@
     <div id='logo'></div>
     <div id="map"></div>
     <div id="explanation"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEoiFzG0XaPOHqYqQ6AGAcNBosbJQ7RUw&libraries=places&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEoiFzG0XaPOHqYqQ6AGAcNBosbJQ7RUw&libraries=places&callback=initMap" async defer>
+    </script>
     <script>
     var map;
     var infowindow,
         the_name,
         place_rating,
         website_link;
-    var latitu = { { { latitu } } },
-        longitu = { { { longitu } } }
+    var latitu = {{{latitu}}},
+        longitu = {{{longitu}}};
 
-    // var getAddress = (address, callback) => {
-    //     request({
-    //         url: 'https://maps.googleapis.com/maps/api/geocode/json' + '?address=' + encodeURIComponent(address),
-    //         json: true
-    //     }, (error, response, body) => {
-    //         if (error) {
-    //             // console.log('Can not connect to google maps');
-    //         } else if (body.status === 'ZERO_RESULTS') {
-    //             // console.log('Can not find requested address');
-    //         } else if (body.status === 'OK') {
-    //             return(body.results[0].formatted_address)
-    //         }
-    //     });
-    // };
+    var getAddress = (address, callback)=>{
+        request({
+            url:'https://maps.googleapis.com/maps/api/geocode/json'+'?address='+encodeURIComponent(address),
+            json: true
+        }, (error, response, body) => {
+            if (error) {
+                console.log('Can not connect to google maps');
+            } else if (body.status === 'ZERO_RESULTS') {
+                console.log('Can not find requested address');
+            } else if (body.status === 'OK') {
+                console.log(`Your requested venue: ${address}`);
+                console.log(`Address: ${body.results[0].formatted_address}`);
+                console.log(`Type: ${body.results[0].types[0]}`);
+            }
+        });
+    };
 
     function initMap() {
+        console.log(latitu, longitu);
         var pyrmont = { lat: latitu, lng: longitu };
 
         map = new google.maps.Map(document.getElementById('map'), {

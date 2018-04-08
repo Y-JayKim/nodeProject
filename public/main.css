@@ -62,9 +62,11 @@
 	top:70px;
 	left:0px;
 	width:100%;
+    height:50%;
 }
 /*-------------------------Main Display-------------------------------------*/
 #yes_address{
+    /*position:absolute;*/
     height: 150px;
     width:100%;
     border:white 2px solid;
@@ -217,9 +219,9 @@ p3{
 #next_submit{
     position: absolute;
     border:none;
-    bottom:20px;
-    left:43%;
-    width:200px;
+    bottom:-100px;
+    left:42%;
+    width:210px;
     height:40px;
     font-size: 20px;
     background-color:rgb(165,0,0);
