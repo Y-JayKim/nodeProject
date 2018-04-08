@@ -27,7 +27,7 @@ var lat = '',
 	address = 'BCIT',
 	validity = 0;
 var userlog = '',
-	userlog1 = '{"jay":["123","460 Westview St"]}';
+	userlog1 = '{"jay":"123"}';
 //---------------------------------------functions-----------------------------------------------
 function readJsonFile(inputFile) {
  //    fs.readFile(inputFile, (err, data) =>{
@@ -79,8 +79,8 @@ app.post('/login_input', (request, response, next) => {
     username_check = request.body.id_input;
 	password_check = request.body.pass_input;
 	validity_check = request.body.validity;
-	console.log(userlog[username][0]);
-	if (String(username_check) in userlog && String(password_check) == userlog[username_check][0]){
+	console.log(userlog[username_check]);
+	if (String(username_check) in userlog && String(password_check) == userlog[username_check]){
 		username = username_check;
 		password = password_check;
 		validity = validity_check;
