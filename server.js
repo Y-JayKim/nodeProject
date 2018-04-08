@@ -29,6 +29,7 @@ var lat = '49.2834444',
 	dest_address = 'bcit, bc, ca',
 	validity = 0,
 	weather_body = '';
+
 var userlog = {jay:{password:"123",address:"204-460 Westview St, Coquitlam, BC, Canada"},min:{password:"123",address:"minsu st, vancouver, BC, Canada"}};
 //---------------------------------------functions-----------------------------------------------
 function readJsonFile() {
@@ -43,7 +44,7 @@ function writeJsonFile(){
 	fs.writeFile('./username.json', JSON.stringify(userlog));
 }
 
-function address_fetcher(){
+function weather_fetcher(){
 	weather_file.geocode(address).then((result) =>{
 		return weather_file.weather(result.lat, result.lng);
 	}).then((result)=>{
@@ -73,7 +74,7 @@ app.post('/address_check', (request, response) => {
 				lat = JSON.stringify(results.lat, undefined, 2)
 				lng = JSON.stringify(results.lng, undefined, 2)
 				response.send('valid');
-				address_fetcher(address);
+				weather_fetcher(address);
 				validity = 1;
 			}
 		});
@@ -99,7 +100,7 @@ app.post('/login_input', (request, response, next) => {
 		password = password_check;
 		validity = validity_check;
 		address = userlog[username_check].address;
-		address_fetcher(address);
+		weather_fetcher(address);
 		response.send('valid');
 
 	}else{
@@ -148,11 +149,14 @@ app.get('/weather', (request, response) => {
 		distance_fee = parseInt(result.dis.split(' ')[0])*5;
 		ori = result.ori;
 		dest = result.dest;
+
+		response.render('weather', {summary: weather_body.summary,icon:weather_body.icon,temp:weather_body.temperature,humid:weather_body.humidity,winds:weather_body.windSpeed,dist_fee:distance_fee,dist:distance, ori:ori,dest:dest});
 	}).catch((error)=>{
 		console.log(error);
 	});
 
-	response.render('weather', {summary: weather_body.summary,icon:weather_body.icon,temp:weather_body.temperature,humid:weather_body.humidity,winds:weather_body.windSpeed,dist_fee:distance_fee,dist:distance, ori:ori,dest:dest})
+
+	
 
 	
 });
