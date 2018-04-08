@@ -6,23 +6,30 @@
         <link href="main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <img id="background" src="./img/background.jpg">
         <div id='top_menu'>
             <div id="logo"></div>
             <button id="main" class="top_but">MAIN</button>
             <button id="contact" class="top_but">Contact</button>
             <button id="about" class="top_but">About Us</button>
         </div>
+        <img id="background" src="./img/background.jpg">
         <div id="main_display" class="displays">
             <div id="no_address" style="display: none;">
                 <p1>Please enter your address to continue as a guest</p1>
                 <div id="address_div">
-                    <input type="text" id='address_input'>
+                    <p>Address Line</p>
+                    <input type="text" id='address_input' class="guest_address" placeholder="Apt#/Street">
+                    <p>City</p>
+                    <input type="text" id='city_input' class="guest_address" placeholder="ex)Vancouver">
+                    <p>Postal Code</p>
+                    <input type="text" id='zip_input' class="guest_address" placeholder="ex)V6B 3H6">
                     <button type="submit" id="address_submit">Submit</button>
                 </div>
-                <p2>If you have an account, press login!</p2>
+                <p3>Or</p3>
                 <div id="login_div">
-                    <button type="submit" id="login_submit">Sign In</button>
+                    <p2>If you have an account, press login!</p2>
+                    <img id="deliverypng" src="./img/scooter.png">
+                    <button type="submit" id="login_submit">Login</button>
                 </div>
             </div>
             <div id="yes_address" style="display: none;">
@@ -36,11 +43,7 @@
                 </div>
                 <button id='re_address'>Re-type<br>address</button>
             </div>
-            <div id="instruction">
-                <p3>어서와 처음이지? Here is the basic step you can follow!</p3>
-                <p4>This is instructions</p4>
-            </div>
-            <button type="submit" id="next_submit" style="display:none;">Next</button>
+            <button type="submit" id="next_submit" style="display:block;">Next</button>
              <script>
                 if ({{{validity}}} == 0){
                     document.getElementById("no_address").style.display = "block";
@@ -71,6 +74,7 @@
                 <a href="mailto:yeonjae.jay.kim@gmail.com">yeonjae.jay.kim@gmail.com</a>
                 <br>
                 </p>
+                <br>
             </div>
         </div>
         <div id="about_display" class="displays" style="display:none;">
@@ -84,10 +88,10 @@
                 </div>
                 <div id="about_right">
                     <p>
-                        Lazymeal is an online food marketplace featuring high quality photos founded in Vancouver BC, serving consumers, offices and local restaurants.
+                        2K is an online food marketplace featuring high quality photos founded in Vancouver BC, serving consumers, offices and local restaurants.
                     </p>
                     <p>
-                        Lazymeal‘s goal is to offer an online food ordering experience that is second to none. Eating is a daily event for everyone. We believe it should be something enjoyable and fulfilling. Lazymeal strives to be a convenient, easy, and reliable option for everyone who needs to order food on-demand or in advance.
+                        2K goal is to offer an online food ordering experience that is second to none. Eating is a daily event for everyone. We believe it should be something enjoyable and fulfilling. 2K strives to be a convenient, easy, and reliable option for everyone who needs to order food on-demand or in advance.
                     </p>
                 </div>
                 <img id="about_img" src="./img/about.jpg">

@@ -57,6 +57,13 @@ function initMap() {
     });
     var messagebox = new google.maps.InfoWindow({ map: map });
 
+    var marker = new google.maps.Marker({
+          position: { lat: 49.283387, lng: -123.115097 },
+          map: map,
+          title: '2K!'
+        });
+
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
