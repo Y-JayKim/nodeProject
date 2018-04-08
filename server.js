@@ -25,10 +25,15 @@ app.use(express.static(__dirname + '/public'));
 var lat = '49.2834444',
 	lng = '-123.1196331',
 	username = 'Guest',
+<<<<<<< HEAD
 	address = '460 Westveiw St, coquitlam, bc, canada',
 	dest_address = 'bcit, bc, ca',
 	validity = 0,
 	weather_body = '';
+=======
+	address = '',
+	validity = 0;
+>>>>>>> d65c07ef35bbc5637e9748283d66ae053a371887
 var userlog = {jay:{password:"123",address:"204-460 Westview St, Coquitlam, BC, Canada"},min:{password:"123",address:"minsu st, vancouver, BC, Canada"}};
 //---------------------------------------functions-----------------------------------------------
 function readJsonFile() {

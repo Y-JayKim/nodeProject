@@ -35,19 +35,19 @@
         </div>
         <div id="yes_address" style="display: none;">
             <div id="user_info">
+                <img id="user_default" src="./img/user.png">
                 <div id="username_info">
-                    Username:
-                    <br>
-                    <br>{{{username}}}
+                    Username: {{{username}}}
                 </div>
                 <div id="address_info">
-                    Address:
-                    <br>
-                    <br>{{{address}}}
+                    Address: {{{address}}}
+                    <div id="left_sep" class="user_info_separator"></div>
+                    <p4>OR</p4>
+                    <div id="right_sep" class="user_info_separator"></div>
+                    <button id='re_address'>New Address</button>
                 </div>
             </div>
-            <button id='re_address'>Re-type
-                <br>address</button>
+            
         </div>
         <button type="submit" id="next_submit" style="display:block;">Next</button>
         <script>
