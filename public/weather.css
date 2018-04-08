@@ -37,6 +37,7 @@
     background-size:contain;
 }
 
+/*----------------------main display------------------------*/
 #display{
     position:absolute;
     left:0px;
@@ -48,6 +49,12 @@
     border:black 2px solid;
 }
 
+h1{
+    position: absolute;
+    left:35%;
+}
+
+/*----------------------Side display------------------------*/
 #weather_display{
     position:absolute;
     left:10px;
@@ -59,10 +66,7 @@
     border:black 2px solid;
     text-align: center;
 }
-h1{
-    position: absolute;
-    left:35%;
-}
+
 #weather_icon{
     position: absolute;
     left:0px;

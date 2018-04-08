@@ -25,9 +25,11 @@ app.use(express.static(__dirname + '/public'));
 var lat = '49.2834444',
 	lng = '-123.1196331',
 	username = 'Guest',
-	address = '',
-	validity = 0;
-var userlog = {jay:{password:"123",address:"204-460 Westview St, Coquitlam, BC, Canada"},min:{password:"123",address:"minsu st, vancouver, BC, Canada"},Guest:{}};
+	address = '460 Westveiw St, coquitlam, bc, canada',
+	dest_address = 'bcit, bc, ca',
+	validity = 0,
+	weather_body = '';
+var userlog = {jay:{password:"123",address:"204-460 Westview St, Coquitlam, BC, Canada"},min:{password:"123",address:"minsu st, vancouver, BC, Canada"}};
 //---------------------------------------functions-----------------------------------------------
 function readJsonFile() {
 	fs.readFile('./username.json', (err, data)=> {
@@ -39,6 +41,16 @@ function readJsonFile() {
 }
 function writeJsonFile(){
 	fs.writeFile('./username.json', JSON.stringify(userlog));
+}
+
+function address_fetcher(){
+	weather_file.geocode(address).then((result) =>{
+		return weather_file.weather(result.lat, result.lng);
+	}).then((result)=>{
+		weather_body = result;
+	}).catch((error)=>{
+		console.log(error)
+	})
 }
 //-----------------------------------main page--------------------------------------------------
 app.get('/', (request, response) => {
@@ -61,6 +73,7 @@ app.post('/address_check', (request, response) => {
 				lat = JSON.stringify(results.lat, undefined, 2)
 				lng = JSON.stringify(results.lng, undefined, 2)
 				response.send('valid');
+				address_fetcher(address);
 				validity = 1;
 			}
 		});
@@ -86,7 +99,9 @@ app.post('/login_input', (request, response, next) => {
 		password = password_check;
 		validity = validity_check;
 		address = userlog[username_check].address;
+		address_fetcher(address);
 		response.send('valid');
+
 	}else{
 		response.send("invalid");
 	}
@@ -96,9 +111,6 @@ app.get("/register", (request, response) =>{
 	response.render("register");
 });
 
-// app.post("/register_check", (request, reponse) => {
-// 	response.send('valid')
-// })
 app.get("/findid", (request, response) =>{
 	response.render('findid');
 });
@@ -126,12 +138,23 @@ app.get('/location', (request, response) => {
 
 //-----------------------------------weather Page-----------------------------------------------------
 app.get('/weather', (request, response) => {
-	weather_file.weather(lat, lng).then((result)=>{
-		weather_body = result;
-		response.render('weather', {summary: weather_body.summary,icon:weather_body.icon,temp:weather_body.temperature,humid:weather_body.humidity,winds:weather_body.windSpeed})
+	var distance_fee = 0,
+		distance = '',
+		ori = '',
+		dest = '';
+
+	weather_file.distance_calc(address, dest_address).then((result)=>{
+		distance = result.dis;
+		distance_fee = parseInt(result.dis.split(' ')[0])*5;
+		ori = result.ori;
+		dest = result.dest;
 	}).catch((error)=>{
-		console.log(error)
-	})
+		console.log(error);
+	});
+
+	response.render('weather', {summary: weather_body.summary,icon:weather_body.icon,temp:weather_body.temperature,humid:weather_body.humidity,winds:weather_body.windSpeed,dist_fee:distance_fee,dist:distance, ori:ori,dest:dest})
+
+	
 });
 
 app.listen(port, () => {
