@@ -28,23 +28,18 @@ var lat = '',
 	validity = 0;
 var userlog = ''
 //---------------------------------------functions-----------------------------------------------
-function processFile(inputFile) {
-    var fs = require('fs'),
-        readline = require('readline'),
-        instream = fs.createReadStream(inputFile),
-        outstream = new (require('stream'))(),
-        file = readline.createInterface(instream, outstream);
-     
-    file.on('line', (line) => {
-        userlog = JSON.parse(line);
-    });
-    
-    file.on('close', (line) => {
-        console.log('done reading file.');
-    });
+function readJsonFile(inputFile) {
+    fs.readFile(inputFile, (err, data) =>{
+	    if (err) {
+	        throw err;
+	    }
+	    userlog = JSON.parse(data);
+	    console.log(typeof userlog);   
+	})
 }
 //-----------------------------------main page--------------------------------------------------
 app.get('/', (request, response) => {
+	readJsonFile(__dirname + '/username.json');
     response.render('main', {
     	validity: validity,
     	username: username,
@@ -74,18 +69,17 @@ app.post('/address_check', (request, response) => {
 });
 //-----------------------------------signin page--------------------------------------------------
 app.get('/signin', (request, response) => {
+	readJsonFile(__dirname + '/username.json');
     response.render('signin');
 });
 
-app.post('/login_input', (request, response) => {
-	setTimeout(()=>{
-		processFile(__dirname + '/username.json');
-	}, 1000);
-	
-	username = request.body.id_input;
+app.post('/login_input', (request, response, next) => {
+    username = request.body.id_input;
 	password = request.body.pass_input;
-	console.log(userlog)
-	if (username in userlog && password == userlog(username)){
+
+	console.log(typeof userlog);
+	// console.log(userlog[username]);
+	if (String(username) in userlog && String(password) == userlog[username]){
 		response.send('valid');
 	}else{
 		response.send("invalid");
