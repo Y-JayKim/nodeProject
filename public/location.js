@@ -1,35 +1,60 @@
-const request = require('request');
+var map;
+var infowindow;
 
 function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 49.283387, lng: -123.115097 },
-        zoom: 12
+    var pyrmont = { lat: 49.283387, lng: -123.115097 };
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: pyrmont,
+        zoom: 15
     });
-    var messagebox = new google.maps.InfoWindow({ map: map });
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            var str_pos = JSON.stringify(position.coords.latitude + ',' + position.coords.longitude);
+    infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+        location: pyrmont,
+        radius: 500,
+        type: ['restaurant']
+    }, callback);
+}
 
-            getAddress(str_pos, (errorMessage, results) => {
-                if (errorMessage) {
-                  var mesg_response = JSON.stringify(errorMessage);
-                } else {
-                  var mesg_response = JSON.stringify(results);
-                }
-            });
-            messagebox.setPosition(pos);
-            // messagebox.setContent(mesg_response);
-            map.setCenter(pos);
-
-        }, function() {
-            handleLocationError(true, messagebox, map.getCenter());
-        });
-    } else {
-        handleLocationError(false, messagebox, map.getCenter());
+function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+        }
     }
+}
+
+function createMarker(place) {
+    get_place_info(place)
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name+
+            '<button onclick="myFunction()">SELECT</button>');
+        infowindow.open(map, this);
+    });
+}
+
+function myFunction() {
+  infowindow.setContent('<div style="background-color: yellow">' + infowindow.getContent() + "</div>");
+  var newDiv = document.createElement("div");
+  // var newContent = document.createTextNode("Hi there and greetings!");
+  var newContent = document.appendChild(place_ino[0]);
+
+  newDiv.appendChild(newContent);
+
+  document.getElementById('explanation').appendChild(newDiv);
+}
+
+function get_place_info(place){
+    var place_ino=[]
+    place_ino.push(place.name)
+
+    return place_ino
 }

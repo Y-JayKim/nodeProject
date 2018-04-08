@@ -3,14 +3,16 @@
     <head>
         <title>Delivery</title> 
         <link href="location.css" rel="stylesheet" type="text/css" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
     </head>
 
     <body>
+        <img id="background" src="./img/background.jpg">
     	<div id='logo'></div>
         <div id="map"></div>
+        <div id="explanation"></div>
         <script src="location.js"></script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOYA62OBwbkCp7SgiDlDYLCdJOIv1fySY&callback=initMap">
-        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEoiFzG0XaPOHqYqQ6AGAcNBosbJQ7RUw&libraries=places&callback=initMap" async defer></script>
     </body>
 </html>
