@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FindId</title> 
+        <style>
+            body{
+                background:url(img/background.png) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            #logo{
+                position: absolute;
+                top:10px;
+                left:0px;
+                right:0px;
+                margin:auto;
+                width:100px;
+                height:100px;
+                background:url(img/logo.png) no-repeat;
+                background-size:cover;
+                cursor:pointer;
+            }
+            #display{
+                position:absolute;
+                left:0px;
+                right:0px;
+                top:0px;
+                bottom:0px;
+                margin:auto;
+                width:500px;
+                height:300px;
+                background: lightblue;
+                font-size:25px;
+                font-style: italic;
+                text-align: center;
+                border-radius: 15px;
+            }
+            p{
+                margin-top:70px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="logo"></div>
+        <div id="display"><p>There is no way to find your Username or Password<br/>Too bad<br/>Just register once more</div>
+        
+        <script>
+        document.getElementById("logo").addEventListener("click",function(){
+            document.location.href = "../login.html";
+        });
+        </script>
+    </body>
+</html>
