@@ -22,39 +22,44 @@ function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
             createMarker(results[i]);
+
         }
     }
 }
 
 function createMarker(place) {
-    get_place_info(place)
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name+
+            '<button onclick="myFunction()">SELECT</button>');
+        infowindow.open(map, this);
+        // addtodiv(place)
+    });
+}
+
+function myFunction() {
+    infowindow.setContent('<div style="background-color: yellow">' + infowindow.getContent() + "</div>");
+  // var newDiv = document.createElement("div");
+  // var newContent = document.createTextNode("Hi there and greetings!");
+
+  // newDiv.appendChild(newContent);
+
+  // document.getElementById('explanation').appendChild(newDiv);
+}
+
+function addtodiv(place) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location
     });
 
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name+
-            '<button onclick="myFunction()">SELECT</button>');
-        infowindow.open(map, this);
-    });
-}
-
-function myFunction() {
-  infowindow.setContent('<div style="background-color: yellow">' + infowindow.getContent() + "</div>");
-  var newDiv = document.createElement("div");
-  // var newContent = document.createTextNode("Hi there and greetings!");
-  var newContent = document.appendChild(place_ino[0]);
-
-  newDiv.appendChild(newContent);
-
-  document.getElementById('explanation').appendChild(newDiv);
-}
-
-function get_place_info(place){
-    var place_ino=[]
-    place_ino.push(place.name)
-
-    return place_ino
+    var newDiv = document.createElement("div");
+    var newContent = document.createTextNode(place.name);
+    newDiv.appendChild(newContent);
+    document.getElementById('explanation').appendChild(newDiv);
 }

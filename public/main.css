@@ -18,7 +18,7 @@
 	left:0px;
 	width:100%;
 	height:70px;
-	background-color:purple;
+    background-color:rgb(0,0,0);
 }
 
 #logo{
@@ -32,37 +32,29 @@
 }
 .top_but{
 	position:absolute;
-	width:100px;
+	width:130px;
 	top:0px;
 	bottom:0px;
 	margin:auto;
-	height:60px;
+	height:40px;
 	border:none;
-	background:lightblue;
+	background:black;
 	cursor:pointer;
 	font-size: 22px;
-    border-radius: 20px;
+    color:white;
+    font-family: Sans-serif;
 }
 #main{
-	left:0px;
-	right:0px;
+	right:400px;
 	margin:auto;
 }
 #contact{
-	right:350px;
+	right:220px;
 }
 
 #about{
-	right:240px;
+	right:80px;
 }
-
-/*#chinese{
-	right:130px;
-}
-
-#japanese{
-	right:20px;
-}*/
 /*---------------------------Displays-----------------------------------------*/
 .displays{
 	position: absolute;
@@ -119,10 +111,11 @@
 }
 p1{
 	position: absolute;
-	left:7%;
+	left:10%;
 	top:15px;
 	font-weight: bold;
-	font-size: 22px;
+	font-size: 19px;
+    font-family: Sans-serif;
 }
 #address_div{
 	position: absolute;
@@ -148,18 +141,19 @@ p1{
 	width:70px;
 	left:420px;
 	border:none;
-	background:black;
+	background:rgb(165,0,0);
 	color:white;
 	font-weight: bold;
 	cursor:pointer;
 }
 p2{
     position: absolute;
-    left:60%;
+    left:63%;
     top:15px;
     margin:auto;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 19px;
+    font-family: Sans-serif;
 }
 #login_div{
     position: absolute;
@@ -177,7 +171,7 @@ p2{
     width:280px;
     right:10px;
     border:none;
-    background:black;
+    background:rgb(165,0,0);
     color:white;
     font-weight: bold;
     cursor:pointer;
@@ -187,7 +181,7 @@ p2{
 	width:100%;
 	height:75%;
 	top:150px;
-    border-top:2px solid black;
+    border-top:2px solid rgb(165,0,0);
 }
 p3{
 	position: absolute;
@@ -195,6 +189,7 @@ p3{
 	top:15px;
 	font-weight: bold;
 	font-size: 22px;
+    font-family: Sans-serif;
 }
 p4{
     position: absolute;
@@ -202,21 +197,23 @@ p4{
     top:50px;
     font-weight: bold;
     font-size: 18px;
+    font-family: Sans-serif;
 }
 /*-------------------------Contact Display-------------------------------------*/
 p5{
     position: absolute;
-    left:40%;
+    left:32%;
     top:30px;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: Sans-serif;
 }
 #map{
     position: absolute;
     left:100px;
-    top:100px;
+    top:120px;
     width:500px;
-    height:400px;
+    height:500px;
 }
 #info{ 
     position: absolute;
@@ -243,7 +240,7 @@ p5{
     margin:auto;
     width:700px;
     height:400px;
-    border-top: lightblue 2px solid
+    border-top: rgb(165,0,0) 2px solid
 }
 #about_left{
     width:40%;
@@ -258,12 +255,18 @@ p5{
 }
 h4{
     left:20%;
-    font-size:20px; 
+    font-size:20px;
+    font-family: Sans-serif;
 }
 h2{
     display: block;
     font-size: 40px;
     font-weight: bold;
+    font-family: Sans-serif;
+}
+
+h1{
+    font-family: Sans-serif;
 }
 #about_img{
     position: absolute;
