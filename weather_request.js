@@ -41,5 +41,3 @@ function getAddress(address, callback) {
     });
     messagebox.setContent(messs_d);
 };
-
-------------------------------------------------------------------------------------------------------

@@ -1,56 +1,60 @@
 var topButClass = document.getElementsByClassName('top_but');
-var buttonsClass = document.getElementsByClassName('list_buttons');
-var address_input = "abc";
 
-
-//-------------------------functions----------------------------------------------------
-function display_choice(option){
-	document.getElementById('western_display').style.display = 'none'
-	document.getElementById('korean_display').style.display = 'none'
-	document.getElementById('chinese_display').style.display = 'none'
-	document.getElementById('japanese_display').style.display = 'none'
-	document.getElementById('main_display').style.display = 'none'
-	document.getElementById(option + '_display').style.display='block';
+// ------------------------------functions-------------------------------------------------
+function address_check(){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "/address_check", true);
+	xmlhttp.setRequestHeader('Content-type', "application/x-www-form-urlencoded");
+	xmlhttp.onreadystatechange = () => {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			if(xmlhttp.responseText == "invalid"){
+				alert("invalid address.\nPlesae enter again");
+			}
+			else if(xmlhttp.responseText == "valid"){
+				alert('Great!')
+				window.location ='/location';
+			}
+		}
+	}
+	xmlhttp.send(`address=${document.getElementById("address_input").value}`);
 }
-
+// ------------------------------interaction-------------------------------------------------
 for (var ind = 0; ind < topButClass.length; ind++){
 	document.getElementById(topButClass[ind].id).addEventListener('click',(ev)=>{
-		display_choice(ev.target.id);
+		document.getElementById('contact_display').style.display = 'none'
+		document.getElementById('about_display').style.display = 'none'
+		document.getElementById('main_display').style.display = 'none'
+		document.getElementById(ev.target.id + '_display').style.display='block';
 	});
 };
 
-for (var buttonInd = 0; buttonInd < buttonsClass.length; buttonInd++){
-	document.getElementById(buttonsClass[buttonInd].id).addEventListener('click',()=>{
-		document.getElementById("login_option").style.display = 'block';
-		document.getElementById('login_option').style.zIndex = '1';
-	});
-};
- 
- // -----------------------features inside -----------------------------------------------------
-document.getElementById('address_submit').addEventListener('click', ()=>{
-	if(document.getElementById('address_input').value == ""){
-		alert("Empty Value!");
-	}else{
-		alert("Thank you for entering your address")
-		address_input = document.getElementById('address_input').value;
+document.getElementById("address_submit").addEventListener("click",()=>{
+	address_check();
+});
+document.getElementById("address_input").addEventListener('keydown',(ev)=>{
+	if(ev.keyCode == 13){
+		address_check();
 	}
-});
+})
 
-// --------------------------options for next page ----------------------------------------
-document.getElementById('signIn').addEventListener('click', ()=>{
-	document.location.href = "./signin";
-});
+//--------------------------------contact map-----------------------------------------------
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 49.283387, lng: -123.115097 },
+        zoom: 15
+    });
+    var messagebox = new google.maps.InfoWindow({ map: map });
 
-document.getElementById('guest').addEventListener('click', ()=>{
-	if(address_input == "abc"){
-		alert("Please enter your address in order to use guest")
-	}else{
-		display_choice("main");
-		document.location.href = "./location";
-	}
-	
-});
-
-document.getElementById('close').addEventListener('click', ()=>{
-	document.getElementById('login_option').style.display="none";
-});
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+        }, ()=> {
+            handleLocationError(true, messagebox, map.getCenter());
+        });
+    } else {
+        handleLocationError(false, messagebox, map.getCenter());
+    }
+}

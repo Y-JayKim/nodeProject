@@ -12,6 +12,9 @@ document.getElementById("loginBut").addEventListener("click",()=>{
 			if(xmlhttp.responseText == "invalid"){
 				alert("Invalid username or Password");
 			}
+			else{
+				xmlhttp.open("POST", "/location", true);
+			}
 		}
 	}
 	xmlhttp.send(`id_input=${document.getElementById("idInput").value}&pass_input=${document.getElementById("passInput").value}`);

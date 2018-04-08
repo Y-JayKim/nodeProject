@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--w_info 나중에 id 안쓰면 지우기!! -->
+<!-- Contact display id and about display id -->
 <html>
     <head>
         <title>Main</title>
@@ -10,19 +10,19 @@
         <div id='top_menu'>
             <div id="logo"></div>
             <button id="main" class="top_but">MAIN</button>
+            <button id="contact" class="top_but">Contact</button>
+            <button id="about" class="top_but">About Us</button>
         </div>
         <div id="main_display" class="displays">
             <p1>Please enter your address to continue as a guest</p1>
             <div id="address_div">
-                <form action="/address_input" method="post">
-                    <input type="text" id='address_input' name="add_input">
-                    <button type="submit" id="address_submit"></button>
-                </form>
+                <input type="text" id='address_input'>
+                <button type="submit" id="address_submit">Submit</button>
             </div>
 <!-- 여기서부터 -->
             <p2>If you have an account, press login!</p2>
             <div id="login_div">
-                <button type="submit" id="login_submit">날 눌러줘><</button>
+                <button type="submit" id="login_submit">Sign In</button>
             </div>
 <!-- 여기까지 -->
             <div id="instruction">
@@ -30,13 +30,46 @@
                 <p4>This is instructions</p4>
             </div>
         </div>
-        <div id="login_option" style="display:none;">Do you already have an account?
-            <p><br><br><br><br>OR</p>
-            <button id="signIn">Sign In</button>
-            <button id="guest">Guest</button>
-            <button id='close'></button>
+        <div id="contact_display" class="displays" style="display:none;">
+            <p5>Contact Information</p5>
+            <div id="map"></div>
+            <div id="info">
+                <h2>Contact</h2>
+                <br>
+                Here at k2 we always look forward to hearing from you. What is your favourite food? Do you prefer Ramen noodles or Thai food ? Where is your favourite Italian restaurant? Do you like your steak rare, medium or well-done? Tell us what you like!
+                <br><br><a href="mailto:yeonjae.jay.kim@gmail.com">yeonjae.jay.kim@gmail.com</a>
+                <br><br><br><h2>RESTAURANT</h2>
+                <p>
+                    Would you like to become a k2 partner restaurant? Or are you already a partner of ours and have questions about the service? Then get in touch with us at:
+                <br><br>
+                <a href="mailto:yeonjae.jay.kim@gmail.com">yeonjae.jay.kim@gmail.com</a>
+                <br>
+                </p>
+            </div>
         </div>
-        <script src="main.js">
+        <div id="about_display" class="displays" style="display:none;">
+            <div id="about_header">
+                <h1>Visual ordering makes the devision-making process delightful and quick.</h1>
+            </div>
+            <div id="about_info">
+                <div id="about_left">
+                    <h4>Our Mission</h4>
+                    <h2>To provide the best digital food ordering experience</h2>
+                </div>
+                <div id="about_right">
+                    <p>
+                        Lazymeal is an online food marketplace featuring high quality photos founded in Vancouver BC, serving consumers, offices and local restaurants.
+                    </p>
+                    <p>
+                        Lazymeal‘s goal is to offer an online food ordering experience that is second to none. Eating is a daily event for everyone. We believe it should be something enjoyable and fulfilling. Lazymeal strives to be a convenient, easy, and reliable option for everyone who needs to order food on-demand or in advance.
+                    </p>
+                </div>
+                <img id="about_img" src="./img/about.jpg">
+            </div>
+        </div>
+        <script src="main.js"></script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOYA62OBwbkCp7SgiDlDYLCdJOIv1fySY&callback=initMap">
         </script>
     </body>
 </html>
