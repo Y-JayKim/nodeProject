@@ -52,12 +52,12 @@ app.get('/', (request, response) => {
 
 app.post('/address_check', (request, response) => {
 	address = request.body.address;
+	console.log(address)
 	if(request.body.validity == 1){
 		address_finder.getAddress(address, (errorMessage, results) =>{
 			if (errorMessage){
 				response.send('invalid');
 			} else{
-				address = request.body.address;
 				lat = JSON.stringify(results.lat, undefined, 2)
 				lng = JSON.stringify(results.lng, undefined, 2)
 				response.send('valid');
