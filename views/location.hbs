@@ -22,14 +22,10 @@
         the_name,
         place_rating,
         website_link;
-<<<<<<< HEAD
+
     var latitu = {{{latitu}}},
         longitu = {{{longitu}}};
-=======
-    var latitu = `{{{latitu}}}`,
-        longitu = `{{{longitu}}}`;
->>>>>>> 69290ed32ec8af64aef2f0f4c9608b2cb37b0833
-
+        
     var getAddress = (address, callback)=>{
         request({
             url:'https://maps.googleapis.com/maps/api/geocode/json'+'?address='+encodeURIComponent(address),
