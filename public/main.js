@@ -21,17 +21,6 @@ function address_check(validity){
 	xmlhttp.send(`address=${document.getElementById("address_input").value}&validity=${validity}`);
 }
 
-// function user_information(){
-// 	var xmlhttpr = new XMLHttpRequest();
-// 	xmlhttpr.open("POST", "/validity_reload", true);
-// 	xmlhttpr.setRequestHeader('Content-type', "application/x-www-form-urlencoded");
-// 	xmlhttpr.onreadystatechange = () => {
-// 		if (xmlhttp.readyState == 4 && xmlhttpr.status == 200){
-// 			location.reload();
-// 		}
-// 	}
-// 	xmlhttpr.send(`validity=${0}`);
-// }
 // ------------------------------interaction-------------------------------------------------
 for (var ind = 0; ind < topButClass.length; ind++){
 	document.getElementById(topButClass[ind].id).addEventListener('click',(ev)=>{

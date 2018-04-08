@@ -55,12 +55,6 @@ app.post('/address_check', (request, response) => {
 	
 	
 });
-
-app.post('/validity_reload', (request, response)=>{
-	console.log('in');
-	validity = 0;
-	response.send('valid');
-});
 //-----------------------------------signin page--------------------------------------------------
 app.get('/signin', (request, response) => {
     response.render('signin');
