@@ -56,10 +56,16 @@ var distance_calc = (pointa, pointb) => {
 				reject('Cannot find weather form the address');
 				//console.log('Cannot find requested address');
 			}else{
-				var distance = body.rows[0].elements[0].distance.text;
-				var ori_addr = body.origin_addresses[0];
-				var dest_addr = body.destination_addresses[0];
-				resolve({dis:distance,ori:ori_addr,dest:dest_addr});
+				if (body.rows[0].elements[0].status == "NOT_FOUND"){
+					console.log(body);
+				}else{
+					var distance = body.rows[0].elements[0].distance.text,
+						ori_addr = body.origin_addresses[0],
+						dest_addr = body.destination_addresses[0];
+						
+					resolve({dis:distance,ori:ori_addr,dest:dest_addr});
+				}
+				
 				
 			}
 		});
