@@ -25,24 +25,24 @@ app.use(express.static(__dirname + '/public'));
 var lat = '49.2834444',
 	lng = '-123.1196331',
 	username = 'Guest',
-	address = 'BCIT',
+	address = '',
 	validity = 0;
-var userlog = '',
-	userlog1 = '{"jay":"123"}';
+var userlog = {jay:{password:"123",address:"204-460 Westview St, Coquitlam, BC, Canada"},min:{password:"123",address:"minsu st, vancouver, BC, Canada"},Guest:{}};
 //---------------------------------------functions-----------------------------------------------
-function readJsonFile(inputFile) {
- //    fs.readFile(inputFile, (err, data) =>{
-	//     if (err) {
-	//         throw err;
-	//     }
-	//     userlog = JSON.parse(data);
-	//     console.log(typeof userlog);   
-	// })
-	userlog = JSON.parse(userlog1);
+function readJsonFile() {
+	fs.readFile('./username.json', (err, data)=> {
+	    if (err) {
+	        throw err;
+	    }
+	    userlog = JSON.parse(data);
+	});
+}
+function writeJsonFile(){
+	fs.writeFile('./username.json', JSON.stringify(userlog));
 }
 //-----------------------------------main page--------------------------------------------------
 app.get('/', (request, response) => {
-	readJsonFile(__dirname + '/username.json');
+	readJsonFile();
     response.render('main', {
     	validity: validity,
     	username: username,
@@ -57,6 +57,7 @@ app.post('/address_check', (request, response) => {
 			if (errorMessage){
 				response.send('invalid');
 			} else{
+				address = request.body.address;
 				lat = JSON.stringify(results.lat, undefined, 2)
 				lng = JSON.stringify(results.lng, undefined, 2)
 				response.send('valid');
@@ -67,8 +68,6 @@ app.post('/address_check', (request, response) => {
 		validity = 0;
 		response.send('reload');
 	}
-	
-	
 });
 //-----------------------------------signin page--------------------------------------------------
 app.get('/signin', (request, response) => {
@@ -80,11 +79,13 @@ app.post('/login_input', (request, response, next) => {
     username_check = request.body.id_input;
 	password_check = request.body.pass_input;
 	validity_check = request.body.validity;
-	console.log(userlog[username_check]);
-	if (String(username_check) in userlog && String(password_check) == userlog[username_check]){
+	console.log(String(username_check) in userlog);
+	console.log(userlog[String(username_check)]);
+	if (String(username_check) in userlog && String(password_check) == userlog[String(username_check)].password){
 		username = username_check;
 		password = password_check;
 		validity = validity_check;
+		address = userlog[username_check].address;
 		response.send('valid');
 	}else{
 		response.send("invalid");
@@ -95,11 +96,28 @@ app.get("/register", (request, response) =>{
 	response.render("register");
 });
 
-app.post("/register_check", (request, reponse) => {
-	reponse.send('valid')
-})
+// app.post("/register_check", (request, reponse) => {
+// 	response.send('valid')
+// })
 app.get("/findid", (request, response) =>{
 	response.render('findid');
+});
+
+app.post("/register_check", (request, response) =>{
+	user_info = request.body;
+
+	if(!(request.body.username in userlog)){
+		userlog[String(user_info.username)]= {password:String(user_info.password),address:String(user_info.address)+', '+ String(user_info.city) +", "+ "BC" +", "+"Canada"};
+		console.log(userlog)
+		address = String(user_info.address)+', '+ String(user_info.city) +", "+ "BC" +", "+"Canada";
+		writeJsonFile();
+		response.send('valid');
+		
+	}else{
+   		response.send('invalid');
+	}
+		
+
 });
 //-----------------------------------location page--------------------------------------------------
 app.get('/location', (request, response) => {
