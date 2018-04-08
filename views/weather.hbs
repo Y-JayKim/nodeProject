@@ -10,7 +10,17 @@
         <div id="top_padding"></div>
         <div id="logo"></div>
         <div id='display'>
-            <h1>Summary
+            <h1>Summary</h1>
+            <br><br>
+            <p1>Delivery Fee:</p1>
+            <p2>$5</p2>
+            <br>
+            <p3>Extra Distance Fee: $ {{{dist_fee}}}     ({{{dist}}})</p3>
+            <br>
+            <p id='p5'>Extra Weather Fee:</p><p id="p6"></p>
+            {{{ori}}}<br><br><br>{{{dest}}}
+            <br><br>
+            Total: <div id='total'></div>
         </div>
         <div id="weather_display">
             Today's weather<br>
@@ -21,14 +31,31 @@
         </div>
         <script>
             var icon = `{{{icon}}}`;
-            
+            var distance = `{{{dist}}}`;
+            var extra_fee = 0;
+
             if (icon.indexOf('cloudy') != -1){
                 document.getElementById('weather_icon').src = 'https://d30y9cdsu7xlg0.cloudfront.net/png/204253-200.png';
+                extra_fee = 5;
+                document.getElementById('total').innerHTML = 5 + extra_fee + {{{dist_fee}}}
+                document.getElementById('p6').innerHTML = extra_fee;
             }else if(icon.indexOf('sun') != -1){
                 document.getElementById('weather_icon').src = 'https://image.flaticon.com/icons/svg/53/53565.svg';
+                document.getElementById('total').innerHTML = 5 + extra_fee + {{{dist_fee}}}
+                document.getElementById('p6').innerHTML = extra_fee;
             }else if(icon.indexOf('rainny') != -1){
                 document.getElementById('weather_icon').src = 'https://cdn3.iconfinder.com/data/icons/weather-58/50/rain-512.png';
+                extra_fee = 10
+                document.getElementById('total').innerHTML = 5 + extra_fee + {{{dist_fee}}}
+                document.getElementById('p6').innerHTML = extra_fee;
+            }else{
+                document.getElementById('weather_icon').src = 'https://d30y9cdsu7xlg0.cloudfront.net/png/204253-200.png';
+                extra_fee  = 5;
+                document.getElementById('total').innerHTML = 5 + extra_fee + {{{dist_fee}}}
+                document.getElementById('p6').innerHTML = extra_fee;
             }
+
+
         </script>
     </body>
 </html>
