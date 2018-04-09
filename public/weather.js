@@ -57,12 +57,12 @@ var distance_calc = (pointa, pointb) => {
 				//console.log('Cannot find requested address');
 			}else{
 				if (body.rows[0].elements[0].status == "NOT_FOUND"){
-					console.log(body);
+					reject(body);
 				}else{
 					var distance = body.rows[0].elements[0].distance.text,
 						ori_addr = body.origin_addresses[0],
 						dest_addr = body.destination_addresses[0];
-						
+
 					resolve({dis:distance,ori:ori_addr,dest:dest_addr});
 				}
 				

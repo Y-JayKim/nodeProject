@@ -13,19 +13,28 @@
     <img id="background" src="./img/background.jpg">
     <div id='logo'></div>
     <div id="map"></div>
-    <div id="explanation"></div>
+    <div id="explanation">
+        
+        <button id="submit" style='display: none;'></button>
+    </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEoiFzG0XaPOHqYqQ6AGAcNBosbJQ7RUw&libraries=places&callback=initMap" async defer>
     </script>
     <script>
     var map;
     var infowindow,
-        the_name,
-        place_rating,
         website_link;
 
     var latitu = {{{latitu}}},
         longitu = {{{longitu}}};
-        
+    
+    var place_address = '',
+        place_name = '',
+        place_rating = '',
+        place_type = '',
+        price_level = '',
+        open_now = '',
+        isDivExist = 0;
+
     var getAddress = (address, callback)=>{
         request({
             url:'https://maps.googleapis.com/maps/api/geocode/json'+'?address='+encodeURIComponent(address),
@@ -42,9 +51,20 @@
             }
         });
     };
+    function deleteDiv(){
+        // var elem = document.getElementById('order_div');
+        // elem.parentNode.removeChild(elem);
+        if(isDivExist == 1){
+            document.getElementById('order_div').remove();
+            document.getElementById('submit').style.display = 'none';
+        }else{
+            document.getElementById('order_div'+String(isDivExist-1)).remove();
+            document.getElementById('submit').style.display = 'none';
+        }
+        
+    }
 
     function initMap() {
-        console.log(latitu, longitu);
         var pyrmont = { lat: latitu, lng: longitu };
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -75,11 +95,18 @@
             map: map,
             position: place.geometry.location
         });
-        console.log(place.opening_hours.weekday_text);
+
+        place_address = place.vicinity,
+        place_name = place.name,
+        place_rating = place.rating,
+        place_type = place.types,
+        price_level = place.price_level,
+        open_now = place.opening_hours.open_now;
+
         google.maps.event.addListener(marker, 'click', function() {
+            
             infowindow.setContent(place.name + "<br><br>" + `<button onclick="myFunction()">SELECT</button>`);
-            the_name = place.name
-            place_rating = place.rating
+            
             // website_link = getAddress(place.name)
             infowindow.open(map, this);
             // addtodiv(place)
@@ -88,22 +115,26 @@
 
     function myFunction() {
         // infowindow.setContent('<div style="background-color: yellow">' + infowindow.getContent() + "</div>");
-        var nameDiv = document.createElement("div");
-        var ratingDiv = document.createElement("div");
-        var websiteDiv = document.createElement("div");
-        nameDiv.classname = 'order_div';
-        ratingDiv.classname = 'order_div';
-        websiteDiv.classname = 'order_div';
-        nameDiv.innerHTML = the_name;
-        ratingDiv.innerHTML = place_rating;
-        websiteDiv.innerHTML = website_link;
-        // var newContent = document.createTextNode("Hi there and greetings!");
+        if(isDivExist == 0){
 
-        // newDiv.appendChild(newContent);
+            var nameDiv = document.createElement("div");
 
-        document.getElementById('explanation').appendChild(nameDiv);
-        document.getElementById('explanation').appendChild(ratingDiv);
-        document.getElementById('explanation').appendChild(websiteDiv);
+            nameDiv.id = 'order_div';
+            nameDiv.innerHTML = place_name + '\n' +place_rating+ '\n' +place_address+ '\n' +place_name+ '\n' +place_rating+ '\n' +place_type+ '\n' +price_level+ '\n' +open_now;
+
+            document.getElementById('explanation').appendChild(nameDiv);
+            document.getElementById('submit').style.display = 'block';
+            isDivExist = 1;
+        }else{
+            deleteDiv();
+            var nameDiv = document.createElement("div");
+
+            nameDiv.id = 'order_div'+isDivExist;
+            nameDiv.innerHTML = place_name + '\n' +place_rating+ '\n' +place_address+ '\n' +place_name+ '\n' +place_rating+ '\n' +place_type+ '\n' +price_level+ '\n' +open_now;
+
+            document.getElementById('explanation').appendChild(nameDiv);
+            isDivExist += 1;
+        }
     }
 
     function addtodiv(place) {
@@ -119,6 +150,7 @@
         newDiv.appendChild(newContent);
         document.getElementById('explanation').appendChild(newDiv);
     }
+
     </script>
 </body>
 </html>

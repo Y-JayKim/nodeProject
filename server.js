@@ -43,7 +43,6 @@ function readJsonFile() {
 function writeJsonFile(){
 	fs.writeFile('./username.json', JSON.stringify(userlog));
 }
-
 function weather_fetcher(){
 	weather_file.geocode(address).then((result) =>{
 		return weather_file.weather(result.lat, result.lng);
@@ -52,6 +51,19 @@ function weather_fetcher(){
 	}).catch((error)=>{
 		console.log(error)
 	})
+}
+
+function latlng_converter(address){
+	address_finder.getAddress(address, (errorMessage, results) =>{
+		if (errorMessage){
+			console.log("latlng_converter Error");
+			lat = '49.2834444',
+			lng = '-123.1196331';
+		} else{
+			lat = JSON.stringify(results.lat, undefined, 2)
+			lng = JSON.stringify(results.lng, undefined, 2)
+		}
+	});
 }
 //-----------------------------------main page--------------------------------------------------
 app.get('/', (request, response) => {
@@ -65,7 +77,7 @@ app.get('/', (request, response) => {
 
 app.post('/address_check', (request, response) => {
 	address = request.body.address;
-	console.log(address)
+
 	if(request.body.validity == 1){
 		address_finder.getAddress(address, (errorMessage, results) =>{
 			if (errorMessage){
@@ -73,6 +85,7 @@ app.post('/address_check', (request, response) => {
 			} else{
 				lat = JSON.stringify(results.lat, undefined, 2)
 				lng = JSON.stringify(results.lng, undefined, 2)
+				
 				response.send('valid');
 				weather_fetcher(address);
 				validity = 1;
@@ -100,14 +113,15 @@ app.post('/login_input', (request, response, next) => {
 		password = password_check;
 		validity = validity_check;
 		address = userlog[username_check].address;
+		latlng_converter(address);
 		weather_fetcher(address);
 		response.send('valid');
-
 	}else{
 		response.send("invalid");
 	}
 });
 
+//-------------------------register Page-------------------------------------------------
 app.get("/register", (request, response) =>{
 	response.render("register");
 });
@@ -119,22 +133,30 @@ app.get("/findid", (request, response) =>{
 app.post("/register_check", (request, response) =>{
 	user_info = request.body;
 
-	if(!(request.body.username in userlog)){
-		userlog[String(user_info.username)]= {password:String(user_info.password),address:String(user_info.address)+', '+ String(user_info.city) +", "+ "BC" +", "+"Canada"};
-		console.log(userlog)
-		address = String(user_info.address)+', '+ String(user_info.city) +", "+ "BC" +", "+"Canada";
-		writeJsonFile();
-		response.send('valid');
-		
-	}else{
-   		response.send('invalid');
-	}
-		
+	address_finder.getAddress(user_info.address, (errorMessage, results) =>{
+		if (errorMessage){
+			response.send('address invalid')
+		}else if(request.body.username in userlog){
+			response.send('username invalid');
+		}else{
+			userlog[String(user_info.username)]= {password:String(user_info.password),address:String(user_info.address)+', '+ String(user_info.city) +", "+ "BC" +", "+"Canada"};
+			address = String(user_info.address)+', '+ String(user_info.city) +", "+ "BC" +", "+"Canada";
+			lat = JSON.stringify(results.lat, undefined, 2)
+			lng = JSON.stringify(results.lng, undefined, 2)
 
+			console.log(userlog)
+
+			writeJsonFile();
+			response.send('valid');
+	   		
+		}
+	});
 });
+
 //-----------------------------------location page--------------------------------------------------
 app.get('/location', (request, response) => {
-    response.render('location', {latitu:49.2834511, longitu:-123.1174435});
+	console.log(lat, lng)
+    response.render('location', {latitu:lat, longitu:lng});
 });
 
 //-----------------------------------weather Page-----------------------------------------------------
@@ -149,18 +171,14 @@ app.get('/weather', (request, response) => {
 		distance_fee = parseInt(result.dis.split(' ')[0])*5;
 		ori = result.ori;
 		dest = result.dest;
-
+		console.log(weather_body);
 		response.render('weather', {summary: weather_body.summary,icon:weather_body.icon,temp:weather_body.temperature,humid:weather_body.humidity,winds:weather_body.windSpeed,dist_fee:distance_fee,dist:distance, ori:ori,dest:dest});
 	}).catch((error)=>{
 		console.log(error);
 	});
-
-
-	
-
-	
 });
 
+//------------------------------app.list to the port--------------------------------------------------
 app.listen(port, () => {
     console.log(`Server is up on the port ${port}`);
 });
