@@ -55,7 +55,7 @@ function address_check(validity){
 				alert("invalid address.\nPlesae enter again");
 			}
 			else if(xmlhttp.responseText == "valid"){
-				alert('Address Vaild');
+				alert('Found the matching address!');
 				location.reload();
 			}else if(xmlhttp.responseText == "reload"){
 				location.reload();
