@@ -96,15 +96,7 @@
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-            console.log(isDivExist);
-            if (isDivExist != 0){
-                document.getElementById('order_div').innerHTML = "";
-                document.getElementById('rating_div').innerHTML = "";
-                document.getElementById('add_div').innerHTML = "";
-                document.getElementById('type_div').innerHTML = "";
-                document.getElementById('price_div').innerHTML = "";
-                document.getElementById('open_div').innerHTML = "";
-            }
+            
             place_address = place.vicinity,
             place_name = place.name,
             place_rating = place.rating,
@@ -121,37 +113,48 @@
     }
 
     function myFunction() {
-        var nameDiv = document.createElement("div"),
-            ratingDiv = document.createElement("div"),
-            addDiv = document.createElement("div"),
-            typeDiv= document.createElement("div"),
-            priceDiv= document.createElement("div"),
-            openDiv= document.createElement("div");
+        if (isDivExist != 0){
+                document.getElementById('order_div').innerHTML = place_name;   
+                document.getElementById('rating_div').innerHTML = place_rating; 
+                document.getElementById('add_div').innerHTML = place_address;
+                document.getElementById('type_div').innerHTML = place_type;   
+                document.getElementById('price_div').innerHTML = price_level;  
+                document.getElementById('open_div').innerHTML = open_now;     
+        }else{
+            var nameDiv = document.createElement("div"),
+                ratingDiv = document.createElement("div"),
+                addDiv = document.createElement("div"),
+                typeDiv= document.createElement("div"),
+                priceDiv= document.createElement("div"),
+                openDiv= document.createElement("div");
 
-        nameDiv.id = 'order_div';
-        ratingDiv.id = "rating_div";
-        addDiv.id = "add_div";
-        typeDiv.id = "type_div";
-        priceDiv.id = "price_div";
-        openDiv.id = "open_div";
-        // nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
-        nameDiv.innerHTML = place_name;
-        ratingDiv.innerHTML = place_rating;
-        addDiv.innerHTML = place_address;
-        typeDiv.innerHTML = place_type;
-        priceDiv.innerHTML = price_level;
-        openDiv.innerHTML = open_now;
-        nameDiv.style.font = "bold 30px sans-serif";
-        ratingDiv.style.font = "20px sans-serif";
+            nameDiv.id = 'order_div';
+            ratingDiv.id = "rating_div";
+            addDiv.id = "add_div";
+            typeDiv.id = "type_div";
+            priceDiv.id = "price_div";
+            openDiv.id = "open_div";
+            // nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
+            nameDiv.innerHTML = place_name;          
+            ratingDiv.innerHTML = place_rating;       
+            addDiv.innerHTML = place_address;      
+            typeDiv.innerHTML = place_type;      
+            priceDiv.innerHTML = price_level;       
+            openDiv.innerHTML = open_now;        
 
-        document.getElementById('explanation').appendChild(nameDiv);
-        document.getElementById('explanation').appendChild(ratingDiv);
-        document.getElementById('explanation').appendChild(addDiv);
-        document.getElementById('explanation').appendChild(typeDiv);
-        document.getElementById('explanation').appendChild(priceDiv);
-        document.getElementById('explanation').appendChild(openDiv);
-        document.getElementById('submit').style.display = 'block';
-        isDivExist = 1;
+            nameDiv.style.font = "bold 30px sans-serif";
+            ratingDiv.style.font = "20px sans-serif";
+
+            document.getElementById('explanation').appendChild(nameDiv);
+            document.getElementById('explanation').appendChild(ratingDiv);
+            document.getElementById('explanation').appendChild(addDiv);
+            document.getElementById('explanation').appendChild(typeDiv);
+            document.getElementById('explanation').appendChild(priceDiv);
+            document.getElementById('explanation').appendChild(openDiv);
+            document.getElementById('submit').style.display = 'block';
+            isDivExist = 1;
+        }
+        
     }
 
     function addtodiv(place) {
