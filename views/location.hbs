@@ -120,7 +120,7 @@
             var nameDiv = document.createElement("div");
 
             nameDiv.id = 'order_div';
-            nameDiv.innerHTML = place_name + '\n' +place_rating+ '\n' +place_address+ '\n' + '\n' + '\n' +place_type+ '\n' +price_level+ '\n' +open_now;
+            nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
 
             document.getElementById('explanation').appendChild(nameDiv);
             document.getElementById('submit').style.display = 'block';
@@ -130,7 +130,7 @@
             var nameDiv = document.createElement("div");
 
             nameDiv.id = 'order_div'+isDivExist;
-            nameDiv.innerHTML = place_name + '\n' +place_rating+ '\n' +place_address+ '\n' + '\n' + '\n' +place_type+ '\n' +price_level+ '\n' +open_now;
+            nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
 
             document.getElementById('explanation').appendChild(nameDiv);
             isDivExist += 1;
