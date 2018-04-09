@@ -87,7 +87,7 @@ app.post('/address_check', (request, response) => {
 				lng = JSON.stringify(results.lng, undefined, 2)
 				
 				response.send('valid');
-				weather_fetcher(address);
+				weather_fetcher();
 				validity = 1;
 			}
 		});
@@ -114,7 +114,7 @@ app.post('/login_input', (request, response, next) => {
 		validity = validity_check;
 		address = userlog[username_check].address;
 		latlng_converter(address);
-		weather_fetcher(address);
+		weather_fetcher();
 		response.send('valid');
 	}else{
 		response.send("invalid");
@@ -145,7 +145,6 @@ app.post("/register_check", (request, response) =>{
 			lng = JSON.stringify(results.lng, undefined, 2)
 
 			console.log(userlog)
-
 			writeJsonFile();
 			response.send('valid');
 	   		
@@ -170,7 +169,7 @@ app.get('/weather', (request, response) => {
 		distance = '',
 		ori = '',
 		dest = '';
-
+	weather_fetcher()
 	weather_file.distance_calc(address, dest_address).then((result)=>{
 		distance = result.dis;
 		distance_fee = parseInt(result.dis.split(' ')[0])*5;
