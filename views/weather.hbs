@@ -17,7 +17,7 @@
                 <br>
                 <p3 class="sum_text">Extra Distance Fee: ${{{dist_fee}}}     ({{{dist}}})</p3>
                 <br>
-                <p5 id='p5' class="sum_text">Extra Weather Fee: </p5><p6 id="p6" class="sum_text"></p6><br>
+                <p5 id='p5' class="sum_text">Extra Weather Fee:  $</p5><p6 id="p6" class="sum_text"></p6><br>
                 <p7 class="sum_text">Restaurant Address: </p7>{{{ori}}}<br><br><br><p8 class="sum_text">Your Address: </p8>{{{dest}}}
                 <br><br>
             </div>
@@ -31,7 +31,7 @@
             Today's weather<br>
             <img id="weather_icon">
             <div id="explanation">
-                {{{summary}}}<br><br>Temperature: {{{temp}}}<br>Humidity: {{{humid}}}<br>Wind speed: {{{winds}}}
+               <br>{{{summary}}}<br><br>Temperature: {{{temp}}}<br>Humidity: {{{humid}}}<br>Wind speed: {{{winds}}}
             </div>
         </div>
         <script>
@@ -51,6 +51,10 @@
             }else if(icon.indexOf('rainny') != -1){
                 document.getElementById('weather_icon').src = 'https://cdn3.iconfinder.com/data/icons/weather-58/50/rain-512.png';
                 extra_fee = 10
+                document.getElementById('total').innerHTML = '$' + String(5 + extra_fee + {{{dist_fee}}})
+                document.getElementById('p6').innerHTML = extra_fee;
+            }else if(icon.indexOf('clear') != -1){
+                document.getElementById('weather_icon').src = 'https://image.flaticon.com/icons/svg/53/53565.svg';
                 document.getElementById('total').innerHTML = '$' + String(5 + extra_fee + {{{dist_fee}}})
                 document.getElementById('p6').innerHTML = extra_fee;
             }else{
