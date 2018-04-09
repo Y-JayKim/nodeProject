@@ -15,7 +15,7 @@
     <div id="map"></div>
     <div id="explanation">
         
-        <button id="submit" style='display: none;'></button>
+        <button id="submit" style='display: none;'>Confirm</button>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEoiFzG0XaPOHqYqQ6AGAcNBosbJQ7RUw&libraries=places&callback=initMap" async defer>
     </script>
@@ -31,7 +31,6 @@
         place_name = '',
         place_rating = '',
         place_type = '',
-        price_level = '',
         open_now = '',
         isDivExist = 0;
 
@@ -100,8 +99,7 @@
             place_address = place.vicinity,
             place_name = place.name,
             place_rating = place.rating,
-            place_type = place.types,
-            price_level = place.price_level,
+            place_type = String(place.types).split(",")[0],
             open_now = place.opening_hours.open_now;
 
             infowindow.setContent(place.name + "<br><br>" + `<button onclick="myFunction()">SELECT</button>`);
@@ -111,45 +109,48 @@
             // addtodiv(place)
         });
     }
-
+    function isItOpen(par){
+        if (par) {
+            return 'open';
+        }else{
+            return 'closed';
+        }
+    }
     function myFunction() {
         if (isDivExist != 0){
                 document.getElementById('order_div').innerHTML = place_name;   
-                document.getElementById('rating_div').innerHTML = place_rating; 
-                document.getElementById('add_div').innerHTML = place_address;
-                document.getElementById('type_div').innerHTML = place_type;   
-                document.getElementById('price_div').innerHTML = price_level;  
-                document.getElementById('open_div').innerHTML = open_now;     
+                document.getElementById('rating_div').innerHTML = "Rating: "+place_rating; 
+                document.getElementById('add_div').innerHTML = "Address: "+place_address;
+                document.getElementById('type_div').innerHTML = "Type: "+place_type;    
+                document.getElementById('open_div').innerHTML = "Open/Closed: "+isItOpen(open_now);       
         }else{
             var nameDiv = document.createElement("div"),
                 ratingDiv = document.createElement("div"),
                 addDiv = document.createElement("div"),
                 typeDiv= document.createElement("div"),
-                priceDiv= document.createElement("div"),
                 openDiv= document.createElement("div");
 
             nameDiv.id = 'order_div';
             ratingDiv.id = "rating_div";
             addDiv.id = "add_div";
             typeDiv.id = "type_div";
-            priceDiv.id = "price_div";
             openDiv.id = "open_div";
             // nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
             nameDiv.innerHTML = place_name;          
-            ratingDiv.innerHTML = place_rating;       
-            addDiv.innerHTML = place_address;      
-            typeDiv.innerHTML = place_type;      
-            priceDiv.innerHTML = price_level;       
-            openDiv.innerHTML = open_now;        
+            ratingDiv.innerHTML = "Rating: "+place_rating;       
+            addDiv.innerHTML = "Address: "+place_address;      
+            typeDiv.innerHTML = "Type: "+place_type;          
+            openDiv.innerHTML = "Open/Closed: "+isItOpen(open_now);        
 
-            nameDiv.style.font = "bold 30px sans-serif";
             ratingDiv.style.font = "20px sans-serif";
+            addDiv.style.font = "20px sans-serif";
+            typeDiv.style.font = "20px sans-serif";
+            openDiv.style.font = "20px sans-serif";
 
             document.getElementById('explanation').appendChild(nameDiv);
             document.getElementById('explanation').appendChild(ratingDiv);
             document.getElementById('explanation').appendChild(addDiv);
             document.getElementById('explanation').appendChild(typeDiv);
-            document.getElementById('explanation').appendChild(priceDiv);
             document.getElementById('explanation').appendChild(openDiv);
             document.getElementById('submit').style.display = 'block';
             isDivExist = 1;
