@@ -51,17 +51,17 @@
             }
         });
     };
-    function deleteDiv(){
-        // var elem = document.getElementById('order_div');
-        // elem.parentNode.removeChild(elem);
-        if(isDivExist == 1){
-            document.getElementById('order_div').remove();
-            document.getElementById('submit').style.display = 'none';
-        }else{
-            document.getElementById('order_div'+String(isDivExist-1)).remove();
-            document.getElementById('submit').style.display = 'none';
-        }
-    }
+    // function deleteDiv(){
+    //     // var elem = document.getElementById('order_div');
+    //     // elem.parentNode.removeChild(elem);
+    //     if(isDivExist == 1){
+    //         document.getElementById('order_div').remove();
+    //         document.getElementById('submit').style.display = 'none';
+    //     }else{
+    //         document.getElementById('order_div'+String(isDivExist-1)).remove();
+    //         document.getElementById('submit').style.display = 'none';
+    //     }
+    // }
 
     function initMap() {
         var pyrmont = { lat: latitu, lng: longitu };
@@ -95,15 +95,23 @@
             position: place.geometry.location
         });
 
-        place_address = place.vicinity,
-        place_name = place.name,
-        place_rating = place.rating,
-        place_type = place.types,
-        price_level = place.price_level,
-        open_now = place.opening_hours.open_now;
-
         google.maps.event.addListener(marker, 'click', function() {
-            
+            console.log(isDivExist);
+            if (isDivExist != 0){
+                document.getElementById('order_div').innerHTML = "";
+                document.getElementById('rating_div').innerHTML = "";
+                document.getElementById('add_div').innerHTML = "";
+                document.getElementById('type_div').innerHTML = "";
+                document.getElementById('price_div').innerHTML = "";
+                document.getElementById('open_div').innerHTML = "";
+            }
+            place_address = place.vicinity,
+            place_name = place.name,
+            place_rating = place.rating,
+            place_type = place.types,
+            price_level = place.price_level,
+            open_now = place.opening_hours.open_now;
+
             infowindow.setContent(place.name + "<br><br>" + `<button onclick="myFunction()">SELECT</button>`);
             
             // website_link = getAddress(place.name)
@@ -113,35 +121,35 @@
     }
 
     function myFunction() {
-        if(isDivExist == 0){
+        var nameDiv = document.createElement("div"),
+            ratingDiv = document.createElement("div"),
+            addDiv = document.createElement("div"),
+            typeDiv= document.createElement("div"),
+            priceDiv= document.createElement("div"),
+            openDiv= document.createElement("div");
 
-            var nameDiv = document.createElement("div");
-            var ratingDiv = document.createElement("div");
+        nameDiv.id = 'order_div';
+        ratingDiv.id = "rating_div";
+        addDiv.id = "add_div";
+        typeDiv.id = "type_div";
+        priceDiv.id = "price_div";
+        openDiv.id = "open_div";
+        // nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
+        nameDiv.innerHTML = place_name;
+        ratingDiv.innerHTML = place_rating;
+        addDiv.innerHTML = place_address;
+        typeDiv.innerHTML = place_type;
+        priceDiv.innerHTML = price_level;
+        openDiv.innerHTML = open_now;
 
-            nameDiv.id = 'order_div';
-            ratingDiv = "rating_div";
-            nameDiv.innerHTML = place_name;
-            // nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
-            ratingDiv.innerHTML=place_rating;
-
-            document.getElementById('explanation').appendChild(nameDiv);
-            document.getElementById('explanation').appendChild(ratingDiv);
-            document.getElementById('submit').style.display = 'block';
-            isDivExist = 1;
-        }else{
-            deleteDiv();
-            var nameDiv = document.createElement("div");
-            var ratingDiv = document.createElement("div");
-
-            nameDiv.id = 'order_div'+isDivExist;
-            ratingDiv.id = 'rating_div'+isDivExist;
-            nameDiv.innerHTML = place_name;
-            ratingDiv.innerHTML=place_rating;
-            // nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
-            document.getElementById('explanation').appendChild(nameDiv);
-            document.getElementById('explanation').appendChild(ratingDiv);
-            isDivExist += 1;
-        }
+        document.getElementById('explanation').appendChild(ratingDiv);
+        document.getElementById('explanation').appendChild(nameDiv);
+        document.getElementById('explanation').appendChild(addDiv);
+        document.getElementById('explanation').appendChild(typeDiv);
+        document.getElementById('explanation').appendChild(priceDiv);
+        document.getElementById('explanation').appendChild(openDiv);
+        document.getElementById('submit').style.display = 'block';
+        isDivExist = 1;
     }
 
     function addtodiv(place) {
