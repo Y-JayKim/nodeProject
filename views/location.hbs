@@ -61,7 +61,6 @@
             document.getElementById('order_div'+String(isDivExist-1)).remove();
             document.getElementById('submit').style.display = 'none';
         }
-        
     }
 
     function initMap() {
@@ -114,25 +113,33 @@
     }
 
     function myFunction() {
-        // infowindow.setContent('<div style="background-color: yellow">' + infowindow.getContent() + "</div>");
         if(isDivExist == 0){
 
             var nameDiv = document.createElement("div");
+            var ratingDiv = document.createElement("div");
 
             nameDiv.id = 'order_div';
-            nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
+            ratingDiv = "rating_div";
+            nameDiv.innerHTML = place_name;
+            // nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
+            ratingDiv.innerHTML=place_rating;
 
             document.getElementById('explanation').appendChild(nameDiv);
+            document.getElementById('explanation').appendChild(ratingDiv);
             document.getElementById('submit').style.display = 'block';
             isDivExist = 1;
         }else{
             deleteDiv();
             var nameDiv = document.createElement("div");
+            var ratingDiv = document.createElement("div");
 
             nameDiv.id = 'order_div'+isDivExist;
-            nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
-
+            ratingDiv.id = 'rating_div'+isDivExist;
+            nameDiv.innerHTML = place_name;
+            ratingDiv.innerHTML=place_rating;
+            // nameDiv.innerHTML = place_name + '<br>' +place_rating+ '<br>' +place_address+ '<br>' +place_type+ '<br>' +price_level+ '<br>' +open_now;
             document.getElementById('explanation').appendChild(nameDiv);
+            document.getElementById('explanation').appendChild(ratingDiv);
             isDivExist += 1;
         }
     }
