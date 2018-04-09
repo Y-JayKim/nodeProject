@@ -33,38 +33,53 @@
 /*----------------------main display------------------------*/
 #display{
     position:absolute;
-    left:0px;
-    right:0px;
+    left:300px;
     top:100px;
-    width:400px;
-    height:500px;
-    margin:auto;
-    border:black 2px solid;
+    width:800px;
+    height:auto;
 }
 
-h1{
+#h1{
     position: absolute;
-    left:35%;
+    left:0px;
+    top:0px;
+    width:auto;
+    height:auto;
+    font:40px bold;
+    font-family:sans-serif;
+}
+.sum_text{
+    position: relative;
+    width:auto;
+    height:auto;
+    font-family:sans-serif;
 }
 
+#main_info{
+    position: absolute;
+    top:60px;
+    left:10px;
+    font:20px bold;
+}
 /*----------------------Side display------------------------*/
 #weather_display{
     position:absolute;
-    left:10px;
-    top:0px;
-    bottom:0px;
-    width:150px;
-    height:300px;
+    left:50px;
+    top:120px;
+    width:170px;
+    height:270px;
     margin:auto;
     border:black 2px solid;
     text-align: center;
+    font:20px bold;
+    font-family:sans-serif;
 }
 
 #weather_icon{
     position: absolute;
     left:0px;
     right:0px;
-    top:10px;
+    top:30px;
     margin:auto;
     width:100px;
     height:100px;
@@ -72,7 +87,52 @@ h1{
 }
 #explanation{
     position: absolute;
-    left:0px;
+    left:10px;
     top:120px;
     font:20px bold;
+    font-family:sans-serif;
+}
+
+/*----------------------Bottom display------------------------*/
+#hori_separator{
+    position: absolute;
+    left:10px;
+    right:10px;
+    top:420px;
+    width:auto;
+    height:2px;
+    background-color:black;
+}
+#tot_summary{
+    position: absolute;
+    right:260px;
+    bottom:20px;
+    width:300px;
+    height:80px; 
+}
+#total_amt{
+    position: absolute;
+    left:0px;
+    font:60px bold;
+    font-family:sans-serif;
+}
+#total{
+    position: absolute;
+    right:10px;
+    bottom:5px;
+    font:70px bold;
+    font-family:sans-serif;
+}
+#confirm_order{
+    position: absolute;
+    right:20px;
+    bottom:30px;
+    width:200px;
+    height:70px;
+    font:40px bold;
+    font-family:sans-serif;
+    background-color:rgb(165,0,0);
+    color:white; 
+    cursor:pointer;
+    border-radius: 25px;
 }
