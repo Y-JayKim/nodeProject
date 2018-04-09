@@ -159,6 +159,11 @@ app.get('/location', (request, response) => {
     response.render('location', {latitu:lat, longitu:lng});
 });
 
+app.post('/location_confirmation', (request, response) => {
+	dest_address = request.body.address;
+	response.send('valid')
+});
+
 //-----------------------------------weather Page-----------------------------------------------------
 app.get('/weather', (request, response) => {
 	var distance_fee = 0,
@@ -171,7 +176,8 @@ app.get('/weather', (request, response) => {
 		distance_fee = parseInt(result.dis.split(' ')[0])*5;
 		ori = result.ori;
 		dest = result.dest;
-		console.log(weather_body);
+
+		console.log(weather_body, '!!');
 		response.render('weather', {summary: weather_body.summary,icon:weather_body.icon,temp:weather_body.temperature,humid:weather_body.humidity,winds:weather_body.windSpeed,dist_fee:distance_fee,dist:distance, ori:ori,dest:dest});
 	}).catch((error)=>{
 		console.log(error);
