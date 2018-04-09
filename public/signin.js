@@ -8,11 +8,11 @@ function login_submit(validity){
 	xmlhttp.onreadystatechange = () => {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			if(xmlhttp.responseText == "invalid"){
-				alert("Invalid username or Password");
+				alert("Invalid Username or Password");
 				document.getElementById('passInput').value = '';
 			}
 			else if(xmlhttp.responseText == "valid"){
-				alert('It is Valid');
+				alert('Login Successful');
 				window.location = '/';
 			}
 		}

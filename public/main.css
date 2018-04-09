@@ -156,9 +156,7 @@ p4{
 p{
     position: relative;
     margin:auto;
-    left:4%;
     top:3%;
-    font-family: Sans-serif;
 }
 p1{
 	position: absolute;
@@ -287,6 +285,7 @@ p5{
     margin:auto;
     width:400px;
     height:auto;
+    font-family: Sans-serif;
 }
 
 #separator{
@@ -305,7 +304,7 @@ p5{
 }
 
 .res_sep{
-    top:370px;
+    top:390px;
 }
 /*-------------------------About Display-------------------------------------*/
 #about_header{
@@ -356,4 +355,11 @@ h1{
     width:100%;
     top:300px;
     height:auto;
+}
+
+p7{
+    position: relative;
+    margin:auto;
+    top:3%;
+    font-family: Sans-serif;
 }
