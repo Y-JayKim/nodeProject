@@ -178,6 +178,10 @@ app.get('/weather', (request, response) => {
 	});
 });
 
+//-----------------------------------Confirm Page-----------------------------------------------------
+app.get('/confirm', (request, response) => {
+	response.render('confirm')
+})
 //------------------------------app.list to the port--------------------------------------------------
 app.listen(port, () => {
     console.log(`Server is up on the port ${port}`);

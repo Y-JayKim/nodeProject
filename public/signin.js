@@ -9,6 +9,7 @@ function login_submit(validity){
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			if(xmlhttp.responseText == "invalid"){
 				alert("Invalid username or Password");
+				document.getElementById('passInput').value = '';
 			}
 			else if(xmlhttp.responseText == "valid"){
 				alert('It is Valid');
@@ -22,6 +23,16 @@ function login_submit(validity){
 //-----------------------------interaction----------------------
 document.getElementById("loginBut").addEventListener("click",()=>{
 	login_submit(1);
+});
+document.getElementById('idInput').addEventListener('keydown',(ev)=>{
+	if(ev.keyCode == 13){
+		login_submit(1);
+	}
+});
+document.getElementById('passInput').addEventListener('keydown',(ev)=>{
+	if(ev.keyCode == 13){
+		login_submit(1);
+	}
 });
 
 document.getElementById('register').addEventListener("click",()=>{

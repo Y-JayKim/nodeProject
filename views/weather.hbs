@@ -63,7 +63,9 @@
                 document.getElementById('total').innerHTML = '$' + String(5 + extra_fee + {{{dist_fee}}})
                 document.getElementById('p6').innerHTML = extra_fee;
             }
-
+            document.getElementById('confirm_order').addEventListener('click',()=>{
+                window.location="/confirm";
+            });
 
         </script>
     </body>
