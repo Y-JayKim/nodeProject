@@ -4,9 +4,9 @@ const fs = require('fs');
 const request = require('request');
 const bodyParser = require('body-parser')
 
-const address_finder = require('./address_finder.js')
+const address_finder = require('./address_finder.js');
 const weather_file = require('./public/weather.js');
-
+const pixabay = require('./public/pixabay.js');
 var app = express();
 
 app.use(bodyParser.urlencoded({
@@ -28,7 +28,8 @@ var lat = '49.2834444',
     address = '460 Westveiw St, coquitlam, bc, canada',
     dest_address = 'bcit, bc, ca',
     validity = 0,
-    weather_body = '';
+    weather_body = '',
+    item="";
 
 var userlog = { jay: { password: "123", address: "204-460 Westview St, Coquitlam, BC, Canada" }, min: { password: "123", address: "minsu st, vancouver, BC, Canada" } };
 //---------------------------------------functions-----------------------------------------------
@@ -183,11 +184,24 @@ app.get('/weather', (request, response) => {
     }).catch((error) => {
         console.log(error);
     });
-});
 
+});
 //-----------------------------------Confirm Page-----------------------------------------------------
 app.get('/confirm', (request, response) => {
     response.render('confirm')
+})
+app.post('/pixa_pri', (request, response) => {
+    console.log(request.body)
+    item = request.body.id_input;
+    response.send('valid');
+})
+
+app.get('/pixa', (request, response) => {
+    pixabay.pixa(item).then((result) => {
+        response.render('pixabay',{first:result.hits[0].largeImageURL,second:result.hits[1].largeImageURL,third:result.hits[2].largeImageURL})
+    }).catch((error) => {
+        console.log(error)
+    })
 })
 //------------------------------app.list to the port--------------------------------------------------
 app.listen(port, () => {

@@ -3,7 +3,7 @@
 //------------------------------function-----------------------
 function login_submit(validity){
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "/login_input", true);
+	xmlhttp.open("POST", "/pixa_pri", true);
 	xmlhttp.setRequestHeader('Content-type', "application/x-www-form-urlencoded");
 	xmlhttp.onreadystatechange = () => {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
@@ -13,7 +13,7 @@ function login_submit(validity){
 			}
 			else if(xmlhttp.responseText == "valid"){
 				alert('Login Successful');
-				window.location = '/';
+				window.location = '/pixa';
 			}
 		}
 	}
